@@ -1,14 +1,14 @@
 # NuncaSupeProgramar - Blog de apuntes para aprender desarrollo web 👾
 
-[![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/fedeholc/NuncaSupeProgramar/blob/main/README.es.md)
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/fedeholc/NuncaSupeProgramar/blob/main/README.md)
 
-My blog to organize notes, learn, and share knowledge.
+Mi blog para organizar apuntes, aprender, y compartir el conocimiento.
 
 Online: [https://nsp.fedeholc.ar/](https://nsp.fedeholc.ar/)
 
-## Libraries and resources
+## Librerías y recursos utilizados
 
-This project uses the following libraries and resources:
+Este proyecto utiliza las siguientes librerías y recursos:
 
 - [date-fns](https://www.npmjs.com/package/date-fns)
 - [gray-matter](https://www.npmjs.com/package/gray-matter)
@@ -17,10 +17,10 @@ This project uses the following libraries and resources:
 - [prismjs](https://prismjs.com/)
 - [react-icons](https://github.com/react-icons/react-icons)
 
-## License
+## Licencia
 
-- [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/) This project is under the MIT License - see the file [LICENSE.md](LICENSE.md) for more details.
+- [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/) Este proyecto está bajo la Licencia MIT - vea el archivo [LICENSE.md](LICENSE.md) para más detalles.
 
-## Author
+### Autor
 
 👤 **Federico Holc** [@fedeholc](https://github.com/fedeholc)

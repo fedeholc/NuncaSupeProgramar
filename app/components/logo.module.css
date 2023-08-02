@@ -1,0 +1,34 @@
+ .logo__container {
+   display: flex;
+   flex-direction: column;
+   align-items: baseline;
+   flex-wrap: wrap;
+ }
+
+ .logo__titulo {
+   font-family: var(--font-roboto-slab), sans-serif;
+   font-size: 1.5rem;
+   font-weight: 800;
+   line-height: 2rem;
+   padding-right: 1rem;
+ }
+
+ .logo__titulo a {
+   text-decoration: none;
+   color: black;
+ }
+
+ .logo__descripcion {
+   margin-top: 0.2rem;
+   font-family: var(--font-roboto-mono), monospace;
+   font-weight: 400;
+   line-height: 1.2rem;
+   font-size: 0.8rem;
+ }
+
+ .logo__colorRosa {
+   color: var(--rosa2);
+ }
+ .logo__colorCeleste {
+   color: var(--celeste);
+ }

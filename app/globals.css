@@ -1,0 +1,320 @@
+:root {
+  --celeste: #00a1d3;
+  --violeta: #a92da3;
+  --naranja: #fd4d2e;
+  --verde: #769f52;
+  --rosa: #ff68a8;
+  --amarillo: #f8ca38;
+
+
+  --amarillo2: #FEC763;
+  --rosa2: #EA55B1;
+  --lila: #A992FA;
+  --azul: #00207F;
+
+  --linkNuevo: hsl(225, 80%, 45%);
+  --linkVisitado: hsl(225, 100%, 35%);
+
+  --casi-blanco: hsl(0, 0%, 99%);
+  --casi-blanco90: rgb(230, 230, 230);
+  --casi-blanco85: hsl(0, 0%, 85%);
+  --casi-blanco65: hsl(0, 0%, 65%);
+
+  --casi-negro: hsl(0, 0%, 5%);
+  --image-back-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='536' height='536' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23e0e0e0' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23d8d8d8'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-image: var(--image-back-light);
+  background-color: var(--casi-blanco);
+
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-size: 18px;
+  min-width: 400px;
+
+}
+
+body {
+  font-family: var(--font-karma), serif;
+  /* Antes tenía Roboto mono */
+  font-weight: 400;
+  line-height: 1.5rem;
+  font-size: 1rem;
+}
+
+code,
+pre {
+  font-size: 0.85rem !important;
+}
+
+/* img {
+  max-width: 200px;
+} */
+/* 
+.layout__wrapper {
+  display:grid;
+  justify-content: center;
+}
+ */
+
+.layout__container {
+  min-height: 100vh;
+  display: grid;
+  justify-content: center;
+  /*   justify-items: center;
+ */
+  grid-template-rows: auto 1fr auto;
+
+}
+
+a:visited {
+  color: var(--linkVisitado)
+}
+
+a {
+  color: var(--linkNuevo);
+}
+
+.layout__main {
+  padding: 0rem 0.5rem;
+  max-width: 700px;
+  background-color: var(--casi-blanco);
+  padding-bottom: 1rem;
+     /*  border-left: 1px dashed var(--amarillo2);
+          border-right: 1px dashed var(--amarillo2); */
+}
+
+header,
+footer {
+  min-width: 100%;
+}
+
+section {
+  margin-top: 2rem;
+}
+
+footer {
+  font-family: var(--font-roboto-mono), mono;
+  font-size: 0.7rem;
+   border-top: 1px dashed var(--amarillo2);
+  display: grid;
+  justify-content: center;
+  background-color: var(--casi-blanco);
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-family: var(--font-karma), serif;
+  font-size: 1.6rem !important;
+  line-height: 1.5rem !important;
+}
+
+.volver {
+  display: grid;
+  justify-content: right;
+  margin: 0rem 0.5rem;
+}
+
+.post__container {
+  font-family: var(--font-karma), serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.post__container li {
+  margin-bottom: 0.5rem;
+}
+
+.post__container h1 {
+  font-size: 2rem;
+}
+
+.post__container h2 {
+  font-size: 1.6rem;
+  margin-top: 2.2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1rem;
+}
+
+.post__container h3 {
+  font-size: 1.4rem;
+  margin-top: 2.2rem;
+  margin-bottom: 0rem;
+  line-height: 1rem;
+}
+
+.post__container ul {
+  margin-top: 0px;
+}
+
+.post__container p {
+  margin-bottom: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+.post__titulo {
+  font-family: var(--font-raleway), sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-top: 0rem;
+  margin-bottom: 1.5rem;
+  line-height: 2.2rem;
+}
+
+.post__tags {
+  font-family: var(--font-roboto-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 400;
+  line-height: 1rem;
+  border-top: 1px dashed lightgray;
+  border-bottom: 1px dashed lightgray;
+  padding: 0.2rem 0rem;
+  display: flex;
+  justify-content: right;
+  margin-bottom: 0.5rem;
+  margin-top: 3rem;
+}
+
+.post__fecha {
+  display: flex;
+  justify-content: right;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+
+.apuntes__titulo {
+  font-family: var(--font-karma), serif;
+}
+
+.apuntes__item {
+  font-family: var(--font-raleway), sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3rem;
+}
+
+.apuntes__item small {
+  font-size: 0.8rem;
+
+}
+
+
+@media only screen and (max-width: 750px) {
+
+
+
+  main,
+  header {
+    max-width: 600px;
+  }
+
+  .remark-highlight {
+    max-width: 100vw;
+  }
+}
+
+
+@media only screen and (max-width: 650px) {
+
+  html,
+  body {
+    font-size: 15px;
+  }
+
+  main,
+  header {
+    max-width: 500px;
+  }
+
+  .remark-highlight {
+    max-width: 100vw;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+
+  html,
+  body {
+    font-size: 15px;
+  }
+
+  main,
+  header {
+    max-width: 380px;
+  }
+
+  .remark-highlight {
+    max-width: 100vw;
+  }
+}
+
+/*********************************************/
+
+
+
+
+
+
+
+/**
+
+ * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+ * 1. Make the element just wide enough to fit its content.
+ * 2. Always fill the visible space in .code-highlight.
+ */
+.code-highlight {
+  float: left;
+  /* 1 */
+  /*   min-width: 100%;
+ */
+  /* 2 */
+}
+
+.code-line {
+  display: block;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: -16px;
+  margin-right: -16px;
+  border-left: 4px solid rgba(0, 0, 0, 0);
+  /* Set placeholder for highlight accent border color to transparent */
+}
+
+.code-line.inserted {
+  background-color: rgba(16, 185, 129, 0.2);
+  /* Set inserted line (+) color */
+}
+
+.code-line.deleted {
+  background-color: rgba(239, 68, 68, 0.2);
+  /* Set deleted line (-) color */
+}
+
+.highlight-line {
+  margin-left: -16px;
+  margin-right: -16px;
+  background-color: rgba(55, 65, 81, 0.5);
+  /* Set highlight bg color */
+  border-left: 4px solid rgb(59, 130, 246);
+  /* Set highlight accent border color */
+}
+
+.line-number::before {
+  display: inline-block;
+  width: 1rem;
+  text-align: right;
+  margin-right: 16px;
+  margin-left: -8px;
+  color: rgb(156, 163, 175);
+  /* Line number color */
+  content: attr(line);
+}
