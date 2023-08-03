@@ -10,7 +10,6 @@ import prism from "remark-prism";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 
 export default async function Post({ params }) {
- 
   const postData = await getPostData(params.id);
 
   let tags = "";
@@ -19,16 +18,18 @@ export default async function Post({ params }) {
   });
   tags = tags.slice(0, tags.length - 2); // le quita la coma y el espacio a la última */
   return (
-    <main>
-      <article className="post__container">
-        <div className="post__fecha">
-          <Date dateString={postData.date} />
-        </div>
-        <h1 className="post__titulo">{postData.title}</h1>
+    <section className="post__container">
+      <div className="post__fecha">
+        <Date dateString={postData.date} />
+      </div>
+      <h1 className="post__titulo">{postData.title}</h1>
 
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        <div className="post__tags">Tags: {tags}</div>
-      </article>
-    </main>
+      <div
+        className="post__content"
+        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+      />
+
+      <div className="post__tags">Tags: {tags}</div>
+    </section>
   );
 }

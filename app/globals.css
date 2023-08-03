@@ -129,6 +129,7 @@ h2 {
   font-family: var(--font-karma), serif;
   font-size: 1.1rem;
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
 .post__container li {
@@ -210,38 +211,8 @@ h2 {
 
 }
 
-
-@media only screen and (max-width: 750px) {
-
-
-
-  .layout__main,
-  header {
-    max-width: 600px;
-  }
-
-  .remark-highlight {
-    max-width: 100vw;
-  }
-}
-
-
-@media only screen and (max-width: 650px) {
-
-  html,
-  body {
-    font-size: 15px;
-  }
-
-    .layout__main,
-  header {
-    max-width: 500px;
-  }
-
-  .remark-highlight {
-    max-width: 100vw;
-  }
-}
+ 
+ 
 
 @media only screen and (max-width: 550px) {
 
@@ -249,37 +220,20 @@ h2 {
   body {
     font-size: 15px;
   }
-
- /*   .layout__main,
-  header {
-    max-width: 280px;
-  }   */
-
-/*   .remark-highlight {
-    max-width: 100vw;
-  } */
+ 
 }
 
 /*********************************************/
 
 
 
-
-
-
-
-/**
-
- * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
- * 1. Make the element just wide enough to fit its content.
- * 2. Always fill the visible space in .code-highlight.
- */
+[class^="language"] {
+  border-radius: 5px;
+}
+ 
 .code-highlight {
   float: left;
-  /* 1 */
-  /*   min-width: 100%;
- */
-  /* 2 */
+ 
 }
 
 .code-line {
@@ -290,6 +244,7 @@ h2 {
   margin-right: -16px;
   border-left: 4px solid rgba(0, 0, 0, 0);
   /* Set placeholder for highlight accent border color to transparent */
+  max-width: 200px;
 }
 
 .code-line.inserted {

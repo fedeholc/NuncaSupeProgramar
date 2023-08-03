@@ -13,7 +13,6 @@ export default async function Home() {
   const allPostsData = await getSortedPostsData();
 
   return (
-    <main>
 
       <section>
    
@@ -30,6 +29,5 @@ export default async function Home() {
           ))}
         </ul>
       </section>
-    </main>
   );
 }
