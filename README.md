@@ -1,4 +1,4 @@
-# <NuncaSupeProgramar/> - Blog de apuntes para aprender desarrollo web 👾 (v0.2)
+# NuncaSupeProgramar - Blog de apuntes para aprender desarrollo web 👾 (v0.2)
 
 [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/fedeholc/NuncaSupeProgramar/blob/main/README.es.md)
 
