@@ -1,13 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
 import Date from "../../components/date";
-import matter from "gray-matter";
-import fs from "fs";
-import path from "path";
-import { remark } from "remark";
-import html from "remark-html";
-import prism from "remark-prism";
-import { getAllPostIds, getPostData } from "../../lib/posts";
+import { getPostData } from "../../lib/posts";
 
 export default async function Post({ params }) {
   const postData = await getPostData(params.id);
