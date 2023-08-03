@@ -215,7 +215,7 @@ h2 {
 
 
 
-  main,
+  .layout__main,
   header {
     max-width: 600px;
   }
@@ -233,7 +233,7 @@ h2 {
     font-size: 15px;
   }
 
-  main,
+    .layout__main,
   header {
     max-width: 500px;
   }
@@ -250,7 +250,7 @@ h2 {
     font-size: 15px;
   }
 
-  main,
+  .layout__main,
   header {
     max-width: 380px;
   }
