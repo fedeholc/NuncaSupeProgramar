@@ -15,6 +15,7 @@ This project uses the following libraries and resources:
 - [remark](https://www.npmjs.com/package/remark)
 - [remark-prism](https://www.npmjs.com/package/remark-prism)
 - [prismjs](https://prismjs.com/)
+- [rehypejs]
 - [react-icons](https://github.com/react-icons/react-icons)
 
 ## License
