@@ -74,23 +74,13 @@ a {
   max-width: 700px;
   background-color: var(--casi-blanco);
   padding-bottom: 1rem;
-     /*  border-left: 1px dashed var(--amarillo2);
-          border-right: 1px dashed var(--amarillo2); */
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
 
-header,
-footer {
-  min-width: 100%;
-}
-
-/* section {
-  margin-top: 2rem;
-} */
 
 footer {
-  font-family: var(--font-roboto-mono), mono;
+  font-family: var(--font-roboto-mono), monospace;
   font-size: 0.7rem;
    border-top: 1px dashed var(--amarillo2);
   display: grid;
@@ -199,22 +189,21 @@ h2 {
 
  
  
-
+/***media queries***/
 @media only screen and (max-width: 550px) {
-
   html,
   body {
     font-size: 15px;
-  }
- 
+  } 
 }
 
-/*********************************************/
 
 
+/** el código que está a continuación es para el resaltado de sintaxis tomado de rehype prism si no me equivoco */
 
-[class^="language"] {
+[class^="language"] { 
   border-radius: 5px;
+  /*este lo sumé yo para ponerle borde redondeado al bloque de código*/
 }
  
 .code-highlight {
@@ -230,7 +219,11 @@ h2 {
   margin-right: -16px;
   border-left: 4px solid rgba(0, 0, 0, 0);
   /* Set placeholder for highlight accent border color to transparent */
+
   max-width: 200px;
+  /* esta línea la agregué yo para que no se desborde el código en pantallas pequeñas 
+  no sé bien que es lo que ocurre porque no pone el ancho
+  a 200px pero evita que sea más grande que la pantalla, adaptándose al tamaño */
 }
 
 .code-line.inserted {
