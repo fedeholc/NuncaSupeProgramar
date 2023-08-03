@@ -55,7 +55,7 @@ export const robotoSlab = Roboto_Slab({
 
 
 export const metadata = {
-  title: "<NuncaSupeProgramar/>",
+  title: "<NuncaSupeProgramar/> v0.2",
   description: "Blog de apuntes para aprender desarrollo web",
 };
 
