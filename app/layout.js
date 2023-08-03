@@ -1,13 +1,11 @@
 /* cspell:disable */
 
 import "./globals.css";
-   import "./prism-material-dark.css";
+import "./prism-material-dark.css";
 import "./prism-line-numbers.css";  
 import NavBar from "./components/navbar";
-import Logo from "./components/logo";
 
 import {
-  Inter,
   Montserrat,
   Karma,
   Raleway,
@@ -16,49 +14,39 @@ import {
 } from "next/font/google";
 
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  /*   display: "swap",
-   */ variable: "--font-montserrat",
+  variable: "--font-montserrat",
 });
 export const karma = Karma({
   weight: ["300","400", "500", "600", "700"],
   subsets: ["latin"],
-  /*   display: "swap",
-   */ variable: "--font-karma",
+  variable: "--font-karma",
 });
 
 export const raleway = Raleway({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  /*   display: "swap",
-   */ variable: "--font-raleway",
+  variable: "--font-raleway",
 });
 
 export const robotoMono = Roboto_Mono({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  /*   display: "swap",
-   */ variable: "--font-roboto-mono",
+  variable: "--font-roboto-mono",
 });
 
 export const robotoSlab = Roboto_Slab({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  /*   display: "swap",
-   */ variable: "--font-roboto-slab",
+  variable: "--font-roboto-slab",
 });
-
-
 
 export const metadata = {
   title: "<NuncaSupeProgramar/> v0.2",
   description: "Blog de apuntes para aprender desarrollo web",
 };
-
 
 export default function RootLayout({ children }) {
   return (
