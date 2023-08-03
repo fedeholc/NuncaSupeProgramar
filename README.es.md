@@ -13,9 +13,11 @@ Este proyecto utiliza las siguientes librerías y recursos:
 - [date-fns](https://www.npmjs.com/package/date-fns)
 - [gray-matter](https://www.npmjs.com/package/gray-matter)
 - [remark](https://www.npmjs.com/package/remark)
-- [remark-prism](https://www.npmjs.com/package/remark-prism)
 - [prismjs](https://prismjs.com/)
 - [rehypejs](https://github.com/rehypejs)
+- [rehype-prism-plus](https://github.com/timlrx/rehype-prism-plus)
+- [rehype-components](https://github.com/marekweb/rehype-components)
+- [hastscript](https://github.com/syntax-tree/hastscript)
 - [react-icons](https://github.com/react-icons/react-icons)
 
 ## Licencia
