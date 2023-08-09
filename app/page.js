@@ -3,10 +3,20 @@ import Date from "./components/date";
 import { getSortedPostsData } from "./lib/posts";
 
 export default async function Home() {
+
   const allPostsData = await getSortedPostsData();
+
+  //set remueve los duplicados
+/*   const allTags = new Set(allPostsData.map(({tags}) => tags).flat());
+ */  
 
   return (
     <section>
+     {/*  <h2 className="apuntes__titulo">tags:</h2>
+      <div>{`Tags: `} 
+        {[...allTags].map((tag) => (`${tag}, `))}
+      </div> */}
+
       <h2 className="apuntes__titulo">Destacados:</h2>
       <ul>
         {allPostsData
