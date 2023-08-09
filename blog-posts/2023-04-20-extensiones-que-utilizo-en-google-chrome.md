@@ -6,7 +6,7 @@ preview: ""
 draft: false
 tags:
   - Extensiones, Google Chrome
-categories: [destacado]
+categories: []
 ---
 
 ### [Json Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
