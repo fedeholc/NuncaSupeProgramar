@@ -11,7 +11,7 @@ export default async function Home() {
    
         <h2 className="apuntes__titulo">Apuntes:</h2>
         <ul>
-          {allPostsData.map(({ id, date, title }) => (
+          {allPostsData.map(({ id, date, title, draft }) => !draft && (
             <li className="apuntes__item" key={id}>
               <Link href={`/posts/${id}`}>{title}</Link>
               <br />

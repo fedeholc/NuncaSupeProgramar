@@ -3,10 +3,10 @@ title: Extensiones que utilizo en Google Chrome
 description: Extensiones que utilizo en Google Chrome
 date: 2023-04-20T21:31:58.625Z
 preview: ""
-draft: true
+draft: false
 tags:
   - Extensiones, Google Chrome
-categories: []
+categories: [destacado]
 ---
 
 ### [Json Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)

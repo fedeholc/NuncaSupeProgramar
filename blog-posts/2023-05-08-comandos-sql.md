@@ -3,7 +3,7 @@ title: Comandos SQL
 description: "Comandos SQL"
 date: 2023-05-08T14:50:14.232Z
 preview: ""
-draft: true
+draft: false
 tags: [SQL]
 categories: []
 ---

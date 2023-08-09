@@ -3,7 +3,7 @@ title: Apuntes de Next JS
 description: Apuntes de Next JS
 date: 2023-04-20T20:47:45.879Z
 preview: ""
-draft: true
+draft: false
 tags:
   - Next
   - React
