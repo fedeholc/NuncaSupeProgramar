@@ -3,16 +3,15 @@ import Date from "./components/date";
 import { getSortedPostsData } from "./lib/posts";
 
 export default async function Home() {
-
   const allPostsData = await getSortedPostsData();
 
   //set remueve los duplicados
-/*   const allTags = new Set(allPostsData.map(({tags}) => tags).flat());
- */  
+  /*   const allTags = new Set(allPostsData.map(({tags}) => tags).flat());
+   */
 
   return (
     <section>
-     {/*  <h2 className="apuntes__titulo">tags:</h2>
+      {/*  <h2 className="apuntes__titulo">tags:</h2>
       <div>{`Tags: `} 
         {[...allTags].map((tag) => (`${tag}, `))}
       </div> */}
@@ -21,18 +20,16 @@ export default async function Home() {
       <ul>
         {allPostsData
           .filter(({ categories }) => categories.includes("destacado"))
-          .map(
-            ({ id, date, title, draft }) =>
-              !draft && (
-                <li className="apuntes__item" key={id}>
-                  <Link href={`/posts/${id}`}>{title}</Link>
-                  <br />
-                  <small>
-                    <Date dateString={date} />
-                  </small>
-                </li>
-              )
-          )}
+          .filter(({ draft }) => draft === false)
+          .map(({ id, date, title, draft }) => (
+            <li className="apuntes__item" key={id}>
+              <Link href={`/posts/${id}`}>{title}</Link>
+              <br />
+              <small>
+                <Date dateString={date} />
+              </small>
+            </li>
+          ))}
       </ul>
       <br />
       <h2 className="apuntes__titulo">Todos los apuntes:</h2>

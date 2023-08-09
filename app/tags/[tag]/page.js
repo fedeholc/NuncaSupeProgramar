@@ -11,29 +11,22 @@ export default async function Tags({ params }) {
 
   return (
     <section>
-      {/*  <h2 className="apuntes__titulo">tags:</h2>
-      <div>{`Tags: `} 
-        {[...allTags].map((tag) => (`${tag}, `))}
-      </div> */}
-
-     {/*  TODO: arreglar que el filtro sea case insensitive */}
-
       <h2 className="apuntes__titulo">Apuntes con tag {params.tag}:</h2>
       <ul>
         {allPostsData
-          .filter(({ tags }) => tags.includes(params.tag))
-          .map(
-            ({ id, date, title, draft }) =>
-              !draft && (
-                <li className="apuntes__item" key={id}>
-                  <Link href={`/posts/${id}`}>{title}</Link>
-                  <br />
-                  <small>
-                    <Date dateString={date} />
-                  </small>
-                </li>
-              )
-          )}
+          .filter(({ tags }) =>
+            tags.map((e) => e.toLowerCase()).includes(params.tag.toLowerCase())
+          )
+          .filter(({ draft }) => draft === false)
+          .map(({ id, date, title, draft }) => (
+            <li className="apuntes__item" key={id}>
+              <Link href={`/posts/${id}`}>{title}</Link>
+              <br />
+              <small>
+                <Date dateString={date} />
+              </small>
+            </li>
+          ))}
       </ul>
     </section>
   );
