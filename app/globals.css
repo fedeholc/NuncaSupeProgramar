@@ -162,13 +162,21 @@ h2 {
   margin-top: 3rem;
 }
 
+.post__tags a {
+  color: var(--rosa2);
+}
+ 
+/* add a coma after each tag except the last one */
+.post__tags span:not(:last-child)::after {
+  content: ", ";
+}
+
 .post__fecha {
   display: flex;
   justify-content: right;
   font-size: 0.9rem;
   margin-top: 0.5rem;
 }
-
 
 .apuntes__titulo {
   font-family: var(--font-karma), serif;

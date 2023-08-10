@@ -5,7 +5,7 @@ export default function Layout({ children }) {
     <>
       {children}
       <div className="volver">
-        <Link href="/">← Volver</Link>
+        <Link href="/">⬅ Volver</Link>
       </div>
     </>
   );

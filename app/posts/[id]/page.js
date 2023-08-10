@@ -20,9 +20,9 @@ export default async function Post({ params }) {
         className="post__content"
         dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
       />
-
-{/*       TODO: falta css para las tags links
- */}      <div className="post__tags">
+      {/*       TODO: falta css para las tags links
+       */}{" "}
+      <div className="post__tags">
         Tags:&nbsp;
         {tags &&
           postData.tags.map((e) => {
@@ -30,7 +30,7 @@ export default async function Post({ params }) {
               <>
                 <Link href={`/tags/${e.toLowerCase()}`} key={e}>
                   {e}
-                </Link>
+                </Link><span></span>
                 &nbsp;
               </>
             );
@@ -39,5 +39,3 @@ export default async function Post({ params }) {
     </section>
   );
 }
-
- 
