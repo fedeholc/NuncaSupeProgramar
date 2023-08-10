@@ -3,7 +3,7 @@ title: Comandos útiles para node / npm
 description: "Comandos útiles para node / npm"
 date: 2023-05-01T12:46:07.925Z
 preview: ""
-draft: true
+draft: false
 tags: [Node, npm]
 categories: []
 ---
