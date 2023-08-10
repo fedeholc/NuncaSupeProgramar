@@ -15,6 +15,7 @@ export default async function Home() {
       <div>{`Tags: `} 
         {[...allTags].map((tag) => (`${tag}, `))}
       </div> */}
+ 
 
       <h2 className="apuntes__titulo">Destacados:</h2>
       <ul>
