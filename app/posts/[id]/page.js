@@ -2,6 +2,10 @@ import Date from "../../components/date";
 import { getPostData } from "../../lib/posts";
 import Link from "next/link";
 
+
+// TODO: ver que se pueden generar las páginas de tags con generateStaticParams
+// https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params
+
 export default async function Post({ params }) {
   const postData = await getPostData(params.id);
 
@@ -27,12 +31,12 @@ export default async function Post({ params }) {
         {tags &&
           postData.tags.map((e) => {
             return (
-              <>
+              <div key={e}>
                 <Link href={`/tags/${e.toLowerCase()}`} key={e}>
                   {e}
                 </Link><span></span>
                 &nbsp;
-              </>
+              </div>
             );
           })}
       </div>

@@ -47,6 +47,39 @@ body {
   font-size: 1rem;
 }
 
+.tag_search {
+  margin: 1rem 0.5rem 0rem 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.tag_search input {
+  font-family: var(--font-roboto-mono);
+  border-radius: 5px;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid gray;
+  background-color: var(--casi-blanco);
+}
+
+.tag_search button {
+  font-family: var(--font-roboto-mono);
+  margin-left: 0.5rem;
+  background-color: var(--casi-blanco);
+  border-radius: 5px;
+  border: 1px solid rgb(36, 36, 36);
+  padding: 0.1rem 0.5rem;
+}
+
+.tag_search button:hover {
+  cursor: pointer;
+  outline: 1px solid black;
+}
+
+.tag_search option {
+  background-color: var(--casi-blanco);
+}
+
 code,
 pre {
   font-size: 0.85rem !important;
@@ -82,7 +115,7 @@ a {
 footer {
   font-family: var(--font-roboto-mono), monospace;
   font-size: 0.7rem;
-   border-top: 1px dashed var(--amarillo2);
+  border-top: 1px dashed var(--amarillo2);
   display: grid;
   justify-content: center;
   background-color: var(--casi-blanco);
@@ -165,7 +198,7 @@ h2 {
 .post__tags a {
   color: var(--rosa2);
 }
- 
+
 /* add a coma after each tag except the last one */
 .post__tags span:not(:last-child)::after {
   content: ", ";
@@ -195,28 +228,29 @@ h2 {
 
 }
 
- 
- 
+
+
 /***media queries***/
 @media only screen and (max-width: 550px) {
+
   html,
   body {
     font-size: 15px;
-  } 
+  }
 }
 
 
 
 /** el código que está a continuación es para el resaltado de sintaxis tomado de rehype prism si no me equivoco */
 
-[class^="language"] { 
+[class^="language"] {
   border-radius: 5px;
   /*este lo sumé yo para ponerle borde redondeado al bloque de código*/
 }
- 
+
 .code-highlight {
   float: left;
- 
+
 }
 
 .code-line {

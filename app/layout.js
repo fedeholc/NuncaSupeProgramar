@@ -2,9 +2,9 @@
 
 import "./globals.css";
 import "./prism-material-dark.css";
-import "./prism-line-numbers.css";  
+import "./prism-line-numbers.css";
 import NavBar from "./components/navbar";
-
+import TagSearch from "./components/tagsearch";
 import {
   Montserrat,
   Karma,
@@ -13,14 +13,13 @@ import {
   Roboto_Slab,
 } from "next/font/google";
 
-
 export const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-montserrat",
 });
 export const karma = Karma({
-  weight: ["300","400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-karma",
 });
@@ -61,6 +60,7 @@ export default function RootLayout({ children }) {
           <div className="layout__container">
             <header className="">
               <NavBar></NavBar>
+              <TagSearch></TagSearch>
             </header>
             <main className="layout__main">{children}</main>
             <footer>Federico Holc ⚡️ 2023</footer>
