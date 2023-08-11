@@ -1,8 +1,7 @@
-import UnCliente from "./uncliente";
 import { getSortedPostsData } from "../lib/posts";
 import { redirect } from "next/navigation";
 
-export default async function TagList() {
+export default async function TagSearch() {
   const allPostsData = await getSortedPostsData();
 
   //set remueve los duplicados
@@ -33,7 +32,7 @@ export default async function TagList() {
           list="tags"
           id="tagInput"
           name="tagInput"
-          placeHolder="Buscar por Tag"
+          placeholder="Tags..."
         />
         <datalist id="tags">
           {allTagsArray.map((tag) => {

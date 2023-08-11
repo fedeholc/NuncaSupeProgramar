@@ -31,12 +31,12 @@ export default async function Post({ params }) {
         {tags &&
           postData.tags.map((e) => {
             return (
-              <>
+              <div key={e}>
                 <Link href={`/tags/${e.toLowerCase()}`} key={e}>
                   {e}
                 </Link><span></span>
                 &nbsp;
-              </>
+              </div>
             );
           })}
       </div>

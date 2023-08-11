@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Date from "./components/date";
 import { getSortedPostsData } from "./lib/posts";
-import TagList from "./components/taglist";
+import TagSearch from "./components/tagsearch";
 
 export default async function Home() {
   const allPostsData = await getSortedPostsData();
