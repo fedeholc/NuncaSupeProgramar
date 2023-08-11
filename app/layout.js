@@ -4,7 +4,7 @@ import "./globals.css";
 import "./prism-material-dark.css";
 import "./prism-line-numbers.css";  
 import NavBar from "./components/navbar";
-
+import TagList from "./components/taglist";
 import {
   Montserrat,
   Karma,
@@ -61,6 +61,7 @@ export default function RootLayout({ children }) {
           <div className="layout__container">
             <header className="">
               <NavBar></NavBar>
+              <TagList></TagList>
             </header>
             <main className="layout__main">{children}</main>
             <footer>Federico Holc ⚡️ 2023</footer>

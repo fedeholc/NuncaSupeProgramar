@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Date from "./components/date";
 import { getSortedPostsData } from "./lib/posts";
+import TagList from "./components/taglist";
 
 export default async function Home() {
   const allPostsData = await getSortedPostsData();
@@ -15,7 +16,6 @@ export default async function Home() {
       <div>{`Tags: `} 
         {[...allTags].map((tag) => (`${tag}, `))}
       </div> */}
- 
 
       <h2 className="apuntes__titulo">Destacados:</h2>
       <ul>
