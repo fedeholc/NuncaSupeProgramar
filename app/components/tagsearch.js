@@ -19,9 +19,10 @@ export default async function TagSearch() {
   async function rutear(data) {
     "use server";
 
-    let ruta = encodeURI(`/tags/${data.get("tagInput")}`);
-
-    redirect(ruta);
+    if (data.get("tagInput") != "") {
+      let ruta = encodeURI(`/tags/${data.get("tagInput")}`);
+      redirect(ruta);
+    }
   }
 
   return (

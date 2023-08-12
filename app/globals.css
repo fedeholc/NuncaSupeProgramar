@@ -14,6 +14,8 @@
 
   --linkNuevo: hsl(225, 80%, 45%);
   --linkVisitado: hsl(225, 100%, 35%);
+  --linkUnderline: #00a2d39c;
+  --linkUnderlineHover: #ff009dbd;
 
   --casi-blanco: hsl(0, 0%, 99%);
   --casi-blanco90: rgb(230, 230, 230);
@@ -94,11 +96,17 @@ pre {
 }
 
 a:visited {
-  color: var(--linkVisitado)
+  color: var(--linkVisitado);
+  text-decoration-color: var(--linkUnderline);
 }
 
 a {
   color: var(--linkNuevo);
+  text-decoration-color: var(--linkUnderline);
+}
+
+a:hover {
+  text-decoration-color: var(--linkUnderlineHover);
 }
 
 .layout__main {
