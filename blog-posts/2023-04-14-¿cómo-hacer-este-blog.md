@@ -5,16 +5,16 @@ date: 2023-04-16T20:40:07.954Z
 preview: ""
 draft: false
 tags:
-  - NextJS
   - CSS
-  - Fuentes
-  - Tipografía
-  - Iconos
-  - React Icons
+  - CSS Modules
   - Fontjoy
+  - Fuentes
   - Google Fonts
   - Metodología BEM
-  - CSS Modules
+  - Next
+  - React Icons
+  - Tipografía
+  - Íconos
 categories: []
 ---
 

@@ -9,12 +9,14 @@ export default async function TagSearch() {
     allPostsData
       .map(({ tags }) => tags)
       .flat()
-      .map((tag) => tag.toLowerCase())
-      .map((tag) => tag.charAt(0).toUpperCase() + tag.slice(1)) //poner en mayúscula la primera letra
+      //.map((tag) => tag.toLowerCase())
+      //.map((tag) => tag.charAt(0).toUpperCase() + tag.slice(1)) //poner en mayúscula la primera letra
       .sort()
   );
 
   const allTagsArray = [...allTags];
+
+   
 
   async function rutear(data) {
     "use server";
@@ -37,7 +39,9 @@ export default async function TagSearch() {
         />
         <datalist id="tags">
           {allTagsArray.map((tag) => {
-            return <option value={tag} key={tag}></option>;
+            return (
+              <option value={tag} key={tag}></option>
+            );
           })}
         </datalist>
         <button type="submit">Buscar</button>

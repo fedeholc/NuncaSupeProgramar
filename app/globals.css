@@ -9,6 +9,7 @@
 
   --amarillo2: #FEC763;
   --rosa2: #EA55B1;
+    --rosa3: #c01980;
   --lila: #A992FA;
   --azul: #00207F;
 
@@ -49,6 +50,34 @@ body {
   font-size: 1rem;
 }
 
+.tag_list__summary {
+  margin-right: 0.5rem;
+  font-weight: 500;
+  text-align: right;
+font-family: var(--font-raleway);
+}
+
+.tag_list {
+  display: grid;
+  font-family: var(--font-raleway);
+  font-size: 0.9rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  border: 2px dashed rgb(180, 180, 180);
+  margin: 0.5rem;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.tag_list__item {
+  padding: 0.2rem 0rem;
+}
+
+.tag_list__count {
+  font-size: 0.9rem;
+  color: rgb(68, 68, 68);
+}
+
 .tag_search {
   margin: 1rem 0.5rem 0rem 0.5rem;
   display: flex;
@@ -69,7 +98,7 @@ body {
   margin-left: 0.5rem;
   background-color: var(--casi-blanco);
   border-radius: 5px;
-  border: 1px solid rgb(36, 36, 36);
+  border: 1px solid gray;
   padding: 0.1rem 0.5rem;
 }
 
@@ -203,8 +232,8 @@ h2 {
   margin-top: 3rem;
 }
 
-.post__tags a {
-  color: var(--rosa2);
+.post__tags a, .tag_list a {
+  color: var(--rosa3);
 }
 
 /* add a coma after each tag except the last one */

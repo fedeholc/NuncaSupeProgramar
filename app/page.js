@@ -17,7 +17,7 @@ export default async function Home() {
         {[...allTags].map((tag) => (`${tag}, `))}
       </div> */}
 
-      <h2 className="apuntes__titulo">Destacados:</h2>
+      <h2 className="apuntes__titulo">Apuntes destacados:</h2>
       <ul>
         {allPostsData
           .filter(({ categories }) => categories.includes("destacado"))

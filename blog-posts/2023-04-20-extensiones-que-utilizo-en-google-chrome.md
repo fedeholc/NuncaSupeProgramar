@@ -5,7 +5,8 @@ date: 2023-04-20T21:31:58.625Z
 preview: ""
 draft: false
 tags:
-  - Extensiones, Google Chrome
+  - Extensiones del Navegador
+  - Google Chrome
 categories: []
 ---
 

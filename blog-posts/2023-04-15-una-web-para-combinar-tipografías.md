@@ -4,7 +4,10 @@ description: ""
 date: 2023-04-15T14:13:52.134Z
 preview: ""
 draft: false
-tags: [fuentes, tipografía, recursos]
+tags:
+  - Fuentes
+  - Recursos
+  - Tipografía
 categories: []
 ---
 

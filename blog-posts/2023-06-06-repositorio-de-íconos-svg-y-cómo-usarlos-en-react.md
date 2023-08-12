@@ -1,10 +1,14 @@
 ---
 title: Repositorio de íconos SVG y cómo usarlos en React
-description: "Repositorio de íconos SVG y cómo usarlos en React"
+description: Repositorio de íconos SVG y cómo usarlos en React
 date: 2023-06-06T17:18:22.013Z
 preview: ""
 draft: false
-tags: [íconos, svg, react, recursos]
+tags:
+  - React
+  - Recursos
+  - SVG
+  - Íconos
 categories: []
 ---
 
