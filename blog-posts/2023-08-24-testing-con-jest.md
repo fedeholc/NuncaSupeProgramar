@@ -1,6 +1,6 @@
 ---
-title: Testing con Jest
-description: Testing con Jest
+title: Testing JavaScript con Jest
+description: Testing JavaScript con Jest
 date: 2023-08-24T20:33:13.865Z
 preview: ""
 draft: false
