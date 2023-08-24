@@ -35,5 +35,11 @@ npx jest
 **En modo watch:**
 
 ```bash
+npx jest --watch
+```
+
+Si no se tiene git activo, hay que usar:
+
+```bash
 npx jest --watchAll
 ```
