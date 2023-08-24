@@ -3,12 +3,12 @@ title: Testing con Jest
 description: Testing con Jest
 date: 2023-08-24T20:33:13.865Z
 preview: ""
-draft: true
+draft: false
 tags:
   - Testing
   - Jest
   - JavaScript
-categories: []
+categories: [destacado]
 slug: testing-con-jest
 ---
 
