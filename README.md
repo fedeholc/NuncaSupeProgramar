@@ -15,6 +15,7 @@ This project uses the following libraries and resources:
 - [remark](https://www.npmjs.com/package/remark)
 - [prismjs](https://prismjs.com/)
 - [rehypejs](https://github.com/rehypejs)
+- [rehype-slug](https://github.com/rehypejs/rehype-slug)
 - [rehype-prism-plus](https://github.com/timlrx/rehype-prism-plus)
 - [rehype-components](https://github.com/marekweb/rehype-components)
 - [hastscript](https://github.com/syntax-tree/hastscript)

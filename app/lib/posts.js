@@ -6,6 +6,8 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import rehypeComponents from "../rehype-components";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
 import { h, s } from "hastscript";
 
 import rehypePrism from "rehype-prism-plus";
@@ -80,12 +82,13 @@ export async function getPostData(id) {
         img: Images,
       },
     })
+    .use(rehypeSlug)
     .use(rehypePrism)
     .use(rehypeStringify)
     .process(matterResult.content);
 
   const contentHtml = processed2.value;
- 
+
   return {
     id,
     contentHtml,
