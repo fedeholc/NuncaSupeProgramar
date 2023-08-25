@@ -282,7 +282,8 @@ h2 {
 /** el código que está a continuación es para el resaltado de sintaxis tomado de rehype prism si no me equivoco */
 
 pre {
-  max-width: 90vw; /* lo agregué yo para que no desborde en pantallas mobile*/
+  max-width: 90vw;
+  /* lo agregué yo para que no desborde en pantallas mobile*/
 }
 
 [class^="language"] {
@@ -303,7 +304,7 @@ pre {
   border-left: 4px solid rgba(0, 0, 0, 0);
   /* Set placeholder for highlight accent border color to transparent */
 
- 
+
 }
 
 .code-line.inserted {
@@ -319,9 +320,9 @@ pre {
 .highlight-line {
   margin-left: -16px;
   margin-right: -16px;
-  background-color: rgba(55, 65, 81, 0.5);
+  background-color: rgba(85, 87, 88, 0.5);
   /* Set highlight bg color */
-  border-left: 4px solid rgb(59, 130, 246);
+  border-left: 4px solid rgb(246, 187, 59);
   /* Set highlight accent border color */
 }
 

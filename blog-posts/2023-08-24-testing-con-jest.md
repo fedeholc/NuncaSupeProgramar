@@ -115,7 +115,10 @@ class PasswordVerifier1 {
 module.exports = { PasswordVerifier1 };
 ```
 
-```javascript showLineNumbers {1,5}
+**Más de una regla en un solo test (¡Problemas!)**
+Si ponemos más de una regla como acá:
+
+```javascript showLineNumbers {11,12}
 describe("v2 PasswordVerifier", () => {
   describe("with a failing rule", () => {
     it("has an error message based on the rule.reason", () => {
@@ -124,10 +127,8 @@ describe("v2 PasswordVerifier", () => {
         passed: false,
         reason: "fake reason",
       });
-
       verifier.addRule(fakeRule);
       const errors = verifier.verify("any value");
-
       expect(errors.length).toBe(1);
       expect(errors[0]).toContain("fake reason");
     });
