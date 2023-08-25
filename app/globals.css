@@ -9,7 +9,7 @@
 
   --amarillo2: #FEC763;
   --rosa2: #EA55B1;
-    --rosa3: #c01980;
+  --rosa3: #c01980;
   --lila: #A992FA;
   --azul: #00207F;
 
@@ -54,7 +54,7 @@ body {
   margin-right: 0.5rem;
   font-weight: 500;
   text-align: right;
-font-family: var(--font-raleway);
+  font-family: var(--font-raleway);
 }
 
 .tag_list {
@@ -232,7 +232,8 @@ h2 {
   margin-top: 3rem;
 }
 
-.post__tags a, .tag_list a {
+.post__tags a,
+.tag_list a {
   color: var(--rosa3);
 }
 
@@ -280,6 +281,10 @@ h2 {
 
 /** el código que está a continuación es para el resaltado de sintaxis tomado de rehype prism si no me equivoco */
 
+pre {
+  max-width: 90vw; /* lo agregué yo para que no desborde en pantallas mobile*/
+}
+
 [class^="language"] {
   border-radius: 5px;
   /*este lo sumé yo para ponerle borde redondeado al bloque de código*/
@@ -287,7 +292,6 @@ h2 {
 
 .code-highlight {
   float: left;
-
 }
 
 .code-line {
@@ -299,10 +303,7 @@ h2 {
   border-left: 4px solid rgba(0, 0, 0, 0);
   /* Set placeholder for highlight accent border color to transparent */
 
-  max-width: 200px;
-  /* esta línea la agregué yo para que no se desborde el código en pantallas pequeñas 
-  no sé bien que es lo que ocurre porque no pone el ancho
-  a 200px pero evita que sea más grande que la pantalla, adaptándose al tamaño */
+ 
 }
 
 .code-line.inserted {

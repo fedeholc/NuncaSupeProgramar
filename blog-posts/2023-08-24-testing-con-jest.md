@@ -82,3 +82,55 @@ describe("verifyPassword", () => {
 - Si se quiere se pueden anidar varios _describe_ para estructurar aún más los tests.
 - En casos cómo este recomiendan usar _toContain_ o _toMatch_ en vez de _toBe_ o _toEqual_ para que no falle si se cambia levemente el mensaje de error.
 - También se puede usar _it_ en vez de _test_, es lo mismo.
+
+## Ejemplo de testear varias reglas de una clase que guarda state
+
+**Definición de la clase**
+
+```javascript
+class PasswordVerifier1 {
+  constructor() {
+    this.rules = [];
+  }
+
+  addRule(rule) {
+    this.rules.push(rule);
+  }
+
+  verify(input) {
+    if (this.rules.length === 0) {
+      throw new Error("There are no rules configured");
+    }
+    const errors = [];
+    this.rules.forEach((rule) => {
+      const result = rule(input);
+      if (result.passed === false) {
+        errors.push(result.reason);
+      }
+    });
+    return errors;
+  }
+}
+
+module.exports = { PasswordVerifier1 };
+```
+
+```javascript showLineNumbers {1,5}
+describe("v2 PasswordVerifier", () => {
+  describe("with a failing rule", () => {
+    it("has an error message based on the rule.reason", () => {
+      const verifier = new PasswordVerifier1();
+      const fakeRule = (input) => ({
+        passed: false,
+        reason: "fake reason",
+      });
+
+      verifier.addRule(fakeRule);
+      const errors = verifier.verify("any value");
+
+      expect(errors.length).toBe(1);
+      expect(errors[0]).toContain("fake reason");
+    });
+  });
+});
+```
