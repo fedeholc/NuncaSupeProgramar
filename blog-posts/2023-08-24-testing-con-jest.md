@@ -18,6 +18,11 @@ slug: testing-con-jest
 - [Ejemplo de testear varias reglas de una clase que guarda state](#ejemplo-de-testear-varias-reglas-de-una-clase-que-guarda-state)
 - [Uso de beforeEach para evitar duplicación de código](#uso-de-beforeeach-para-evitar-duplicación-de-código)
 - [Uso de Factory Methods](#uso-de-factory-methods)
+- [Testear variaciones de una regla con Test.each](#testear-variaciones-de-una-regla-con-testeach)
+- [Testear que la función arroje un error con ThrowError](#testear-que-la-función-arroje-un-error-con-throwerror)
+
+Los ejemplos de código están tomados del libro *The Art of Unit Testing* de Roy Osherove y Vladimir Khorikov: https://github.com/royosherove/aout3-samples/tree/master 
+
 
 ## Instalación de Jest
 
@@ -52,8 +57,6 @@ npx jest --watchAll
 ```
 
 ## Criterios para nombrar y estructurar los tests
-
-(tomado del libro The Art of Unit Testing de Roy Osherove y Vladimir Khorikov)
 
 1. La unidad de trabajo bajo prueba (la función verifyPassword en el ejemplo)
 2. El escenario o entradas a la unidad (regla fallida)
@@ -363,6 +366,101 @@ test("verify, with no rules, throws exception", () => {
   }
 });
 
+test("verify, with no rules, throws exception", () => {
+  const verifier = makeVerifier();
+  expect(() => verifier.verify("any input")).toThrowError(
+    /no rules configured/
+  );
+});
+```
+
+## Testear variaciones de una regla con Test.each
+
+La regla:
+
+```javascript
+const oneUpperCaseRule = (input) => {
+  return {
+    passed: input.toLowerCase() !== input,
+    reason: "at least one upper case needed",
+  };
+};
+
+module.exports = {
+  oneUpperCaseRule,
+};
+```
+
+Tests:
+
+```javascript showLineNumbers
+const { oneUpperCaseRule } = require("../password-rules");
+
+describe("v2 one uppercase rule", () => {
+  test("given no uppercase, it fails", () => {
+    const result = oneUpperCaseRule("abc");
+    expect(result.passed).toEqual(false);
+  });
+
+  test.each(["Abc", "aBc"])("given one uppercase, it passes", (input) => {
+    const result = oneUpperCaseRule(input);
+    expect(result.passed).toEqual(true);
+  });
+});
+```
+
+También, como en el siguiente ejemplo, se podría hacer sin test.each, usando JavaScript. Además se agrega el caso en el que no pasa la regla, pero no es bueno porque estamos testeando dos cosas distintas en el mismo lugar.
+
+```javascript showLineNumbers
+describe("v5 one uppercase rule, with vanilla JS test.each", () => {
+  const tests = {
+    Abc: true,
+    aBc: true,
+    abc: false,
+  };
+
+  for (const [input, expected] of Object.entries(tests)) {
+    test(`given ${input}, ${expected}`, () => {
+      const result = oneUpperCaseRule(input);
+      expect(result.passed).toEqual(expected);
+    });
+  }
+});
+```
+
+## Testear que la función arroje un error con ThrowError
+
+Si nuestra función fuera así:
+
+```javascript {9-11} showLineNumbers
+class PasswordVerifier1 {
+  constructor() {
+    this.rules = [];
+  }
+  addRule(rule) {
+    this.rules.push(rule);
+  }
+  verify(input) {
+    if (this.rules.length === 0) {
+      throw new Error("There are no rules configured");
+    }
+    const errors = [];
+    this.rules.forEach((rule) => {
+      const result = rule(input);
+      if (result.passed === false) {
+        errors.push(result.reason);
+      }
+    });
+    return errors;
+  }
+}
+
+module.exports = { PasswordVerifier1 };
+```
+
+Nuestro test podría ser así:
+
+```javascript showLineNumbers
 test("verify, with no rules, throws exception", () => {
   const verifier = makeVerifier();
   expect(() => verifier.verify("any input")).toThrowError(
