@@ -8,6 +8,14 @@ tags: [Node, Express, Apuntes]
 categories: [destacado]
 ---
 
+- [Estructura básica de un servidor en Node](#estructura-básica-de-un-servidor-en-node)
+- [Estructura básica de un servidor en Express](#estructura-básica-de-un-servidor-en-express)
+- [Servidor en Express con middleware](#servidor-en-express-con-middleware)
+- [Servidor de archivos estáticos en Express](#servidor-de-archivos-estáticos-en-express)
+- [Routing con redireccionamiento en Express](#routing-con-redireccionamiento-en-express)
+- [Utilizar las views / templates de Express](#utilizar-las-views--templates-de-express)
+- [Manejo de errores en Express](#manejo-de-errores-en-express)
+
 ## Estructura básica de un servidor en Node
 
 Ejemplo de estructura básica de un servidor en Node: se crea el servidor y se le pasa una callback function (requestHandler en este caso) que va a manejar los pedidos y respuestas del servidor. Se le va a pasar un objeto request (req) en el que llega la información del pedido, y otro response (res) en el que va la respuesta. En este ejemplo además se procesa la request para hacer un routing.
