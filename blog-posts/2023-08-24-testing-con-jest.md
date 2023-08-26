@@ -20,9 +20,11 @@ slug: testing-con-jest
 - [Uso de Factory Methods](#uso-de-factory-methods)
 - [Testear variaciones de una regla con Test.each](#testear-variaciones-de-una-regla-con-testeach)
 - [Testear que la función arroje un error con ThrowError](#testear-que-la-función-arroje-un-error-con-throwerror)
+- [Testing con dependencias (Sutbs y Mocks)](#testing-con-dependencias-sutbs-y-mocks)
+  - [Stubs](#stubs)
+  - [Mocks](#mocks)
 
-Los ejemplos de código están tomados del libro *The Art of Unit Testing* de Roy Osherove y Vladimir Khorikov: https://github.com/royosherove/aout3-samples/tree/master 
-
+Los ejemplos de código están tomados del libro _The Art of Unit Testing_ de Roy Osherove y Vladimir Khorikov: https://github.com/royosherove/aout3-samples/tree/master
 
 ## Instalación de Jest
 
@@ -468,3 +470,18 @@ test("verify, with no rules, throws exception", () => {
   );
 });
 ```
+
+## Testing con dependencias (Sutbs y Mocks)
+
+Cuando lo que queremos testear tiene dependencias en la entrada (incoming dependencies) se utilizan **Stubs**. Cuando tiene dependencias en la salida (outgoing dependencies) se utilizan **Mocks**.
+
+Cada unidad a testear puede tener tres tipos diferentes de puntos de salida: devolución de un valor, cambio de estado, o una llamada a una función externa. Para los dos primeros casos se usan Stubs, solo para el tercero es necesario un Mock.
+
+### Stubs
+
+Si tuviéramos una función que utiliza internamente la librería moments para obtener el día de la semana y operar según el mismo, sería un problema para testear porque no está bajo nuestro control (también podrían ser otras situaciones en las que se depende de datos externos, como una base de datos, un servicio, etc.).
+En esos casos lo que hay que hacer es mover fuera de la función esa llamada. Eso se puede hacer de distintas maneras, como puede ser pasar el dato como parámetro, o crear una función que devuelva el dato (dependency injection). El libro explica como hacerlo con un diseño funcional y también en uno orientado a objetos. Luego a la hora de hacer el test se simula (eso es el stub) el parámetro o la función que devuelve el dato, para que devuelva lo que nosotros queremos para el test.
+
+### Mocks
+
+Las pruebas de interacción consisten en comprobar cómo una unidad de trabajo interactúa y envía mensajes (es decir, llama a funciones) a una dependencia fuera de su control. Las funciones u objetos Mock se utilizan para comprobar que una llamada se ha realizado correctamente a una dependencia externa.
