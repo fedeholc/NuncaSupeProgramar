@@ -3,7 +3,7 @@ title: ¿Cómo hacer que el prompt de bash muestre la rama de git?
 description: ""
 date: 2023-09-22T13:38:05.410Z
 preview: ""
-draft: true
+draft: false
 tags: [git, bash]
 categories: []
 ---
