@@ -16,20 +16,26 @@ const postsDirectory = path.join(process.cwd(), "blog-posts");
 export async function getSortedPostsData() {
   // Get file names  under /posts
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, "");
+ 
+  //el filter evita que si hay otro tipo de archivo tire error
+  const allPostsData = fileNames
+    .filter((fileName) => {
+      return path.extname(fileName) === ".md";
+    })
+    .map((fileName) => {
+      const id = fileName.replace(/\.md$/, "");
 
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+      const fullPath = path.join(postsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, "utf8");
 
-    const matterResult = JSON.parse(JSON.stringify(matter(fileContents)));
+      const matterResult = JSON.parse(JSON.stringify(matter(fileContents)));
 
-    // Combine the data with the id
-    return {
-      id,
-      ...matterResult.data,
-    };
-  });
+      // Combine the data with the id
+      return {
+        id,
+        ...matterResult.data,
+      };
+    });
 
   // Sort posts by date
   return allPostsData.sort((a, b) => {
@@ -44,13 +50,17 @@ export async function getSortedPostsData() {
 export function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory);
 
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        id: fileName.replace(/\.md$/, ""),
-      },
-    };
-  });
+  return fileNames
+    .filter((fileName) => {
+      return path.extname(fileName) === ".md";
+    })
+    .map((fileName) => {
+      return {
+        params: {
+          id: fileName.replace(/\.md$/, ""),
+        },
+      };
+    });
 }
 
 export async function getPostData(id) {
@@ -59,18 +69,14 @@ export async function getPostData(id) {
   const matterResult = JSON.parse(JSON.stringify(matter(fileContents)));
 
   /* esto era para transformar las imágenes del markdown (que se pasan como
-   img en html), en Image de next
-   Al parecer hace la transformación pero next luego lo renderiza como img, pero lo que no veo que ponga son todos los atributos que suele poner con la optimización de imagenes, ¿las estará optimizando?
-   los parametros que les paso yo manualmente si los toma.
-  TODO: ver si dejamos o no el rehype components, si se puede lograr que funcione, y ver el tema imagenes, en que carpeta, o si online, etc.
-   */
+   img en html), en Image de next, pero no funcionó. */
 
   const Images = (properties) => {
     return h("Image", {
-      src: `${properties.src}`,
-      alt: "",
+      src: `${properties.src.slice(7)}`, //remueve "public/" de la ruta de la imagen
+      alt: properties.alt,
       //height: 100,
-      width: "100%",
+      //width: "100%", //ver si en lugar de ponerlo acá lo puse en el css
     });
   };
 

@@ -211,6 +211,10 @@ h2 {
   margin-top: 0.3rem;
 }
 
+.post__container img {
+  max-width: 100%;
+}
+
 .post__titulo {
   font-family: var(--font-raleway), sans-serif;
   font-size: 2rem;
