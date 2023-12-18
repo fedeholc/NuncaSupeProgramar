@@ -232,7 +232,7 @@ Las posibles soluciones son:
 `git rebase rama_base` (integra en la rama base los cambios de la rama en la que se encuentra)
 A diferencia de merge (que crea un commit de merge), rebase reescribe la historia del proyecto, creando una nueva historia lineal.
 
-<!-- imagen -->
+![Diagrama de git merge vs rebase](/post-images/git-merge-rebase.webp)
 
 No es conveniente usarlo en ramas que se comparten con otros colaboradores, ya que al reescribir la historia del proyecto puede causar conflictos.
 

@@ -64,12 +64,13 @@ export async function getPostData(id) {
    TODO: Con lo cual lo podría sacar,
    o dejar solo para cambiar el tamaño, o agregar alguna clase (habría que probar
     cómo hacer esto, sino hay otros plugins para rehype que lo hacen */
+
   const Images = (properties) => {
     return h(`Image`, {
       src: `${properties.src}`,
       alt: "",
-      height: 100,
-      width: 100,
+      //height: 100,
+      width: "100%",
     });
   };
 
