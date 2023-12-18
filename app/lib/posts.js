@@ -62,7 +62,7 @@ export async function getPostData(id) {
    img en html), en Image de next
    Al parecer hace la transformación pero next luego lo renderiza como img, pero lo que no veo que ponga son todos los atributos que suele poner con la optimización de imagenes, ¿las estará optimizando?
    los parametros que les paso yo manualmente si los toma.
-  
+  TODO: ver si dejamos o no el rehype components, si se puede lograr que funcione, y ver el tema imagenes, en que carpeta, o si online, etc.
    */
 
   const Images = (properties) => {
