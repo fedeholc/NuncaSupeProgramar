@@ -58,15 +58,16 @@ export async function getPostData(id) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const matterResult = JSON.parse(JSON.stringify(matter(fileContents)));
 
-  /* esto es para transformar las imágenes del markdown (que se pasan como
-   img en html), en Image de next, pero no sirve porque si bien aparecen
+  /* esto era para transformar las imágenes del markdown (que se pasan como
+   img en html), en Image de next
+   Al parecer hace la transformación pero next luego lo renderiza como img, pero lo que no veo que ponga son todos los atributos que suele poner con la optimización de imagenes, ¿las estará optimizando?
+   los parametros que les paso yo manualmente si los toma.
+   , pero no sirve porque si bien aparecen
    como Image next las está optimizando, no sé por qué. 
-   TODO: Con lo cual lo podría sacar,
-   o dejar solo para cambiar el tamaño, o agregar alguna clase (habría que probar
-    cómo hacer esto, sino hay otros plugins para rehype que lo hacen */
+   */
 
   const Images = (properties) => {
-    return h(`Image`, {
+    return h("Image", {
       src: `${properties.src}`,
       alt: "",
       //height: 100,
