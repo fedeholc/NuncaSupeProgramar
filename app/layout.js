@@ -14,30 +14,30 @@ import {
   Roboto_Slab,
 } from "next/font/google";
 
-export const montserrat = Montserrat({
+  const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-montserrat",
 });
-export const karma = Karma({
+  const karma = Karma({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-karma",
 });
 
-export const raleway = Raleway({
+  const raleway = Raleway({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-raleway",
 });
 
-export const robotoMono = Roboto_Mono({
+  const robotoMono = Roboto_Mono({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-roboto-mono",
 });
 
-export const robotoSlab = Roboto_Slab({
+  const robotoSlab = Roboto_Slab({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-roboto-slab",
