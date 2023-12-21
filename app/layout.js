@@ -1,5 +1,6 @@
 /* cspell:disable */
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 import "./prism-material-dark.css";
@@ -69,6 +70,8 @@ export default function RootLayout({ children }) {
             <footer>Federico Holc ⚡️ 2023</footer>
           </div>
         </div>
+        <Analytics />
+
         <SpeedInsights />
       </body>
     </html>
