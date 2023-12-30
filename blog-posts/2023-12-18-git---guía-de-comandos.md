@@ -213,6 +213,10 @@ Si hay cambios locales sin confirmar y hay cambios en el repositorio remoto, Git
 **Crear una nueva rama y cambiar a ella:**
 `git checkout -b nombre_rama`
 
+**Borrar una rama**
+`git branch -d nombre_rama` (solo si la rama ya fue integrada en otra rama)
+o `git branch -D nombre_rama` para forzar el borrado (aunque no haya sido integrada).
+
 ## Merge
 
 **Integrar cambios de una rama en otra:**
