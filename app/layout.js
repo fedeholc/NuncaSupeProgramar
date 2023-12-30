@@ -1,4 +1,6 @@
 /* cspell:disable */
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 import "./prism-material-dark.css";
@@ -14,30 +16,30 @@ import {
   Roboto_Slab,
 } from "next/font/google";
 
-  const montserrat = Montserrat({
+const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-montserrat",
 });
-  const karma = Karma({
+const karma = Karma({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-karma",
 });
 
-  const raleway = Raleway({
+const raleway = Raleway({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-raleway",
 });
 
-  const robotoMono = Roboto_Mono({
+const robotoMono = Roboto_Mono({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-roboto-mono",
 });
 
-  const robotoSlab = Roboto_Slab({
+const robotoSlab = Roboto_Slab({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-roboto-slab",
@@ -61,13 +63,16 @@ export default function RootLayout({ children }) {
           <div className="layout__container">
             <header className="">
               <NavBar></NavBar>
-<br/>
+              <br />
               <TagList></TagList>
             </header>
             <main className="layout__main">{children}</main>
             <footer>Federico Holc ⚡️ 2023</footer>
           </div>
         </div>
+        <Analytics />
+
+        <SpeedInsights />
       </body>
     </html>
   );
