@@ -24,6 +24,7 @@ Documentación oficial: [https://git-scm.com/](https://git-scm.com/)
 - [Merge](#merge)
 - [Rebase](#rebase)
 - [Modos de trabajo](#modos-de-trabajo)
+- [Borrar el historial de commits](#borrar-el-historial-de-commits)
 
 ## Configuración
 
@@ -213,6 +214,10 @@ Si hay cambios locales sin confirmar y hay cambios en el repositorio remoto, Git
 **Crear una nueva rama y cambiar a ella:**
 `git checkout -b nombre_rama`
 
+**Borrar una rama**
+`git branch -d nombre_rama` (solo si la rama ya fue integrada en otra rama)
+o `git branch -D nombre_rama` para forzar el borrado (aunque no haya sido integrada).
+
 ## Merge
 
 **Integrar cambios de una rama en otra:**
@@ -257,3 +262,33 @@ Una explicación más detallada acá: [https://www.atlassian.com/git/tutorials/r
 - Crear una rama de trabajo, y realizar tantos commits/subramas como se requiera.
 - Luego para fusionar sin conservar ese historial, hacer un rebase interactivo al commit original donde se creó la rama.
 - En el rebase interactivo, se pueden combinar varios commits en uno solo con squash, o eliminarlos, etc.
+
+## Borrar el historial de commits
+
+Eliminar la carpeta .git puede causar problemas en el repositorio de Git. Para borrar todo el historial de commits pero conservar el código en su estado actual, se lo puede hacer del siguiente modo:
+
+1. Cambiar de rama
+   ```
+   git checkout --orphan latest_branch
+   ```
+   La opción --orphan se utiliza para crear una nueva rama sin historial de confirmaciones. Es decir, la nueva rama comienza como si estuviera completamente vacía, sin compartir historial de confirmaciones con ninguna otra rama existente.
+2. Agregar todos los archivos
+   ```
+   git add -A
+   ```
+3. Confirmar los cambios
+   ```
+   git commit -am "mensaje de confirmación"
+   ```
+4. Eliminar la rama
+   ```
+   git branch -D main
+   ```
+5. Renombrar la rama actual a main
+   ```
+   git branch -m main
+   ```
+6. Finalmente, actualizar forzosamente el repositorio
+   ```
+   git push -f origin main
+   ```
