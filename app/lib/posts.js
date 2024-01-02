@@ -7,6 +7,7 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import rehypeComponents from "../rehype-components";
 import rehypeSlug from "rehype-slug";
+import remarkBreaks from "remark-breaks";
 import { h, s } from "hastscript";
 
 import rehypePrism from "rehype-prism-plus";
@@ -16,7 +17,7 @@ const postsDirectory = path.join(process.cwd(), "blog-posts");
 export async function getSortedPostsData() {
   // Get file names  under /posts
   const fileNames = fs.readdirSync(postsDirectory);
- 
+
   //el filter evita que si hay otro tipo de archivo tire error
   const allPostsData = fileNames
     .filter((fileName) => {
@@ -82,6 +83,7 @@ export async function getPostData(id) {
 
   const processed2 = await remark()
     .use(remarkParse)
+    .use(remarkBreaks)
     .use(remarkRehype)
     .use(rehypeComponents, {
       components: {
