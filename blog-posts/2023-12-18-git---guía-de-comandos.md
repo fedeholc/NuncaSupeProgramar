@@ -191,6 +191,9 @@ Se lo suele utilizar para guardar los cambios temporalmente antes de cambiar de 
 `git push` es como hacer `git push origin main` (si esos son los nombres por defecto de la rama y el repositorio remoto).
 Para configurar la rama y el repositorio remoto por defecto: `git branch --set-upstream-to=origin/main` o si directamente se quiere hacer un primer push al cambiar a una rama nueva por ejemplo: `git push -u origin nombre-rama`.
 
+**Borrar una rama remota**
+`git push origin --delete nombre-rama`
+
 **Divergencia entre repositorio local y remoto:**
 En este caso, puede ser necesaria una fusión (merge) para combinar los cambios en el repositorio local. Se hace con: `git pull origin <nombre-rama>`.
 Si los cambios locales deben sobrescribir a lo remoto, hacer `git push --force origin <nombre-rama>`.
