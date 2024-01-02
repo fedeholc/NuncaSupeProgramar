@@ -24,6 +24,7 @@ Documentación oficial: [https://git-scm.com/](https://git-scm.com/)
 - [Merge](#merge)
 - [Rebase](#rebase)
 - [Modos de trabajo](#modos-de-trabajo)
+- [Posibles modos de trabajo cuando no se quieren guardar todos los commits en el historial](#posibles-modos-de-trabajo-cuando-no-se-quieren-guardar-todos-los-commits-en-el-historial)
 - [Borrar el historial de commits](#borrar-el-historial-de-commits)
 
 ## Configuración
@@ -250,48 +251,60 @@ Una explicación más detallada acá: [https://www.atlassian.com/git/tutorials/r
 
 ## Modos de trabajo
 
-**Posibles modos de trabajo cuando no se quieren guardar todos los commits en el historial**
+## Posibles modos de trabajo cuando no se quieren guardar todos los commits en el historial
 
-1. Con uso de soft-reset:
+1. Con uso de soft-reset
 
-- Crear una rama de trabajo, y realizar tantos commits/subramas como se requiera.
-- Luego para fusionar sin conservar ese historial, hacer un git-reset al commit original donde se creó la rama. Todas las modificaciones son ahora cambios locales no commiteados.
-- (volver a ) Hacer commit y fusionar.
-  De ese modo se pueden enviar las ramas temporales al repositorio remoto, algo que no se puede hacer con un stash.
-  Con este modo de trabajo, técnicamente los commits originales quedan guardados, pero desvinculados, lo cual de alguna manera evita perder trabajo, ya que se pueden recuperar un commits desvinculados.
+   - Crear una rama de trabajo, y realizar tantos commits/subramas como se requiera.
+   - Luego para fusionar sin conservar ese historial, hacer un git-reset al commit original donde se creó la rama. Todas las modificaciones son ahora cambios locales no commiteados.
+   - (volver a ) Hacer commit y fusionar.
+     De ese modo se pueden enviar las ramas temporales al repositorio remoto, algo que no se puede hacer con un stash.
+     Con este modo de trabajo, técnicamente los commits originales quedan guardados, pero desvinculados, lo cual de alguna manera evita perder trabajo, ya que se pueden recuperar un commits desvinculados.
 
 2. Con uso de rebase:
 
-- Crear una rama de trabajo, y realizar tantos commits/subramas como se requiera.
-- Luego para fusionar sin conservar ese historial, hacer un rebase interactivo al commit original donde se creó la rama.
-- En el rebase interactivo, se pueden combinar varios commits en uno solo con squash, o eliminarlos, etc.
+   - Crear una rama de trabajo, y realizar tantos commits/subramas como se requiera.
+   - Luego para fusionar sin conservar ese historial, hacer un rebase interactivo al commit original donde se creó la rama.
+   - En el rebase interactivo, se pueden combinar varios commits en uno solo con squash, o eliminarlos, etc.
 
 ## Borrar el historial de commits
 
 Eliminar la carpeta .git puede causar problemas en el repositorio de Git. Para borrar todo el historial de commits pero conservar el código en su estado actual, se lo puede hacer del siguiente modo:
 
 1. Cambiar de rama
-   ```
+
+   ```sh
    git checkout --orphan latest_branch
    ```
+
    La opción --orphan se utiliza para crear una nueva rama sin historial de confirmaciones. Es decir, la nueva rama comienza como si estuviera completamente vacía, sin compartir historial de confirmaciones con ninguna otra rama existente.
+
 2. Agregar todos los archivos
-   ```
+
+   ```sh
    git add -A
    ```
+
 3. Confirmar los cambios
-   ```
+
+   ```sh
    git commit -am "mensaje de confirmación"
    ```
+
 4. Eliminar la rama
-   ```
+
+   ```sh
    git branch -D main
    ```
+
 5. Renombrar la rama actual a main
-   ```
+
+   ```sh
    git branch -m main
    ```
+
 6. Finalmente, actualizar forzosamente el repositorio
-   ```
+
+   ```sh
    git push -f origin main
    ```

@@ -113,6 +113,13 @@ body {
   background-color: var(--casi-blanco);
 }
 
+code { 
+  color: rgb(0, 0, 0);
+  background-color: rgba(128, 128, 128, 0.1);
+  padding: 0.2rem 0.3rem;
+  border-radius: 3px;
+}
+
 code,
 pre {
   font-size: 0.85rem !important;
