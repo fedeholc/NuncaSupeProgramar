@@ -24,7 +24,6 @@ Documentación oficial: [https://git-scm.com/](https://git-scm.com/)
 - [Merge](#merge)
 - [Rebase](#rebase)
 - [Modos de trabajo](#modos-de-trabajo)
-- [Posibles modos de trabajo cuando no se quieren guardar todos los commits en el historial](#posibles-modos-de-trabajo-cuando-no-se-quieren-guardar-todos-los-commits-en-el-historial)
 - [Borrar el historial de commits](#borrar-el-historial-de-commits)
 
 ## Configuración
@@ -251,7 +250,7 @@ Una explicación más detallada acá: [https://www.atlassian.com/git/tutorials/r
 
 ## Modos de trabajo
 
-## Posibles modos de trabajo cuando no se quieren guardar todos los commits en el historial
+Posibles modos de trabajo cuando no se quieren guardar todos los commits en el historial
 
 1. Con uso de soft-reset
 
