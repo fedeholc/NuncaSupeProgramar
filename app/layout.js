@@ -67,7 +67,7 @@ export default function RootLayout({ children }) {
               <TagList></TagList>
             </header>
             <main className="layout__main">{children}</main>
-            <footer>Federico Holc ⚡️ 2023</footer>
+            <footer>Federico Holc ⚡️ 2024</footer>
           </div>
         </div>
         <Analytics />
