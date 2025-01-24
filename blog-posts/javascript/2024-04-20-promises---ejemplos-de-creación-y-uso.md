@@ -1,5 +1,5 @@
 ---
-title: "Javascript / Promises - Ejemplo de creación, uso, y testing"
+title: "JavaScript / Promises - Ejemplo de creación, uso, y testing"
 description: Ejemplo de creación y uso de promises en javascript, junto con el testing correspondiente.
 date: 2024-04-20T12:48:32.085Z
 preview: ""
