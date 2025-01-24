@@ -1,5 +1,5 @@
 ---
-title: Apuntes de Node / Express y SQL
+title: "Node: uso de MySQL"
 description: "Apuntes de Node / Express y SQL"
 date: 2023-05-06T12:52:41.791Z
 preview: ""
