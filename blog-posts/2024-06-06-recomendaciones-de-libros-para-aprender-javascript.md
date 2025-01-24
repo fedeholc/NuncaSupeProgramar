@@ -9,8 +9,6 @@ categories: []
 type: default
 ---
 
-# Recomendaciones de libros para aprender JavaScript
-
 **You Don't Know JS** de Kyle Simpson
 
 - 2da edición, en inglés: <https://github.com/getify/You-Dont-Know-JS>
