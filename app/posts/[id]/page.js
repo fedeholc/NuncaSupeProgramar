@@ -14,7 +14,9 @@ export async function generateStaticParams() {
 }
 
 export default async function Post({ params }) {
-  const postData = await getPostData(params.id);
+  const { id } = await params;
+
+  const postData = await getPostData(id);
 
   let tags = "";
   postData.tags.forEach((tag, index) => {
