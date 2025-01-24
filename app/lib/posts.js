@@ -14,19 +14,46 @@ import rehypePrism from "rehype-prism-plus";
 
 const postsDirectory = path.join(process.cwd(), "blog-posts");
 
-export async function getSortedPostsData() {
+async function getAllFiles(directoryPath) {
+  let filesList = [];
 
-  const fileNames = await fs.readdir(postsDirectory);
+  try {
+    const files = await fs.readdir(directoryPath, { withFileTypes: true }); // Lee el contenido del directorio
+    for (const file of files) {
+      const filePath = path.join(directoryPath, file.name); // Construye la ruta completa
+
+      if (file.isDirectory()) {
+        // Si es un directorio, llama a la función recursivamente
+        const subDirectoryFiles = await getAllFiles(filePath);
+        filesList = filesList.concat(subDirectoryFiles); // Añade los archivos de los subdirectorios
+      } else {
+        filesList.push(filePath); // Si es un archivo, lo añade a la lista
+      }
+    }
+  } catch (error) {
+    console.error("Error al leer el directorio:", error);
+    throw error;
+  }
+
+  return filesList;
+}
+
+export async function getSortedPostsData() {
+  const fileNames = await getAllFiles(postsDirectory);
+
   const filteredFileNames = fileNames.filter((fileName) => {
     return path.extname(fileName) === ".md";
   });
 
   const allPostsData = await Promise.all(
     filteredFileNames.map(async (fileName) => {
-      const id = fileName.replace(/\.md$/, "");
+      //remove path from fileName
 
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = await fs.readFile(fullPath, "utf8");
+      const file = path.basename(fileName);
+
+      const id = file.replace(/\.md$/, "");
+
+      const fileContents = await fs.readFile(fileName, "utf8");
 
       const matterResult = JSON.parse(JSON.stringify(matter(fileContents)));
 
@@ -80,7 +107,24 @@ export async function getPostIds() {
 }
 
 export async function getPostData(id) {
-  const fullPath = path.join(postsDirectory, `${decodeURI(id)}.md`);
+  //Antes cuando no se podían usar subdirectorios para guardar los posts, con el id ya se podía construir el path porque eran todos iguales ej 'blog-posts/2021-08-01-una-prueba.md' es decir directorio+id+'.md', pero ahora hay que buscar el archivo que tenga el id en el nombre entre los subdirectorios y obtener el path completo.
+
+  const fileNames = await getAllFiles(postsDirectory);
+  const filteredFileNames = fileNames.filter((fileName) => {
+    return path.extname(fileName) === ".md";
+  });
+
+  let fullPath = "";
+
+  filteredFileNames.forEach((fileName) => {
+    const file = path.basename(fileName);
+    const idFile = file.replace(/\.md$/, "");
+
+    if (idFile === decodeURI(id)) {
+      fullPath = fileName;
+    }
+  });
+
   const fileContents = await fs.readFile(fullPath, "utf8");
   const matterResult = JSON.parse(JSON.stringify(matter(fileContents)));
 
