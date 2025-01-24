@@ -48,13 +48,9 @@ export async function getSortedPostsData() {
   const allPostsData = await Promise.all(
     filteredFileNames.map(async (fileName) => {
       //remove path from fileName
-
       const file = path.basename(fileName);
-
       const id = file.replace(/\.md$/, "");
-
       const fileContents = await fs.readFile(fileName, "utf8");
-
       const matterResult = JSON.parse(JSON.stringify(matter(fileContents)));
 
       // Combine the data with the id
@@ -78,32 +74,19 @@ export async function getSortedPostsData() {
   return sortedPostsData;
 }
 
-export async function getAllPostIds() {
-  const fileNames = await fs.readdir(postsDirectory);
-
-  return fileNames
-    .filter((fileName) => {
-      return path.extname(fileName) === ".md";
-    })
-    .map((fileName) => {
-      return {
-        params: {
-          id: fileName.replace(/\.md$/, ""),
-        },
-      };
-    });
-}
-
 export async function getPostIds() {
-  const fileNames = await fs.readdir(postsDirectory);
+  const fileNames = await getAllFiles(postsDirectory);
 
-  return fileNames
-    .filter((fileName) => {
-      return path.extname(fileName) === ".md";
-    })
-    .map((fileName) => {
-      return fileName.replace(/\.md$/, "");
-    });
+  const filteredFileNames = fileNames.filter((fileName) => {
+    return path.extname(fileName) === ".md";
+  });
+
+  const allPostsIds = filteredFileNames.map((fileName) => {
+    const file = path.basename(fileName);
+    const id = file.replace(/\.md$/, "");
+    return id;
+  });
+  return allPostsIds;
 }
 
 export async function getPostData(id) {
