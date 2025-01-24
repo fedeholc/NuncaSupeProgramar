@@ -1,10 +1,10 @@
 ---
-title: ¿Cómo hacer que el prompt de bash muestre la rama de git?
-description: ""
+title: "Linux - Hacer que el prompt muestre la rama de git"
+description: "Cómo hacer que el prompt de bash muestre la rama de git"
 date: 2023-09-22T13:38:05.410Z
 preview: ""
 draft: false
-tags: [git, bash]
+tags: [git, bash, linux]
 categories: []
 ---
 

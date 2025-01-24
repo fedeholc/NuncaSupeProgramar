@@ -1,6 +1,6 @@
 ---
-title: Recomendaciones de libros para aprender JavaScript
-description: ""
+title: "Javascript - Libros recomendados"
+description: "Recomendaciones de libros para aprender JavaScript"
 date: 2024-06-06T12:21:34.074Z
 preview: ""
 draft: false

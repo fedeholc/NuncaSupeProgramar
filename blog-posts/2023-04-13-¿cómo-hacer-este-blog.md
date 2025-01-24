@@ -1,7 +1,7 @@
 ---
 title: ¿Cómo hacer un blog como este?
 description: Explicación de cómo fui haciendo este blog
-date: 2023-04-16T20:40:07.954Z
+date: 2023-04-13T20:40:07.954Z
 preview: ""
 draft: false
 tags:
@@ -36,6 +36,7 @@ categories: []
 - Con la librería [remark](https://www.npmjs.com/package/remark) se pasa de Markdown a HTML.
 
 ### Syntax Highlighting (resaltado de código)
+
 Para darle color a los bloques de código utilicé [PrismJS](https://prismjs.com/) vía [remark-prism](https://www.npmjs.com/package/remark-prism). Para implementarlo seguí este ejemplo: [https://github.com/leerob/nextjs-prism-markdown](https://github.com/leerob/nextjs-prism-markdown)
 
 ### Tipografías

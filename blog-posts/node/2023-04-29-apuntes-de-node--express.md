@@ -1,10 +1,10 @@
 ---
-title: Apuntes de Node / Express (estructuras básicas)
-description: "Apuntes de Node / Express (estructuras básicas)"
+title: "Node / Express - Crear servidores (estructuras básicas)"
+description: "Apuntes de Node y Express (estructuras básicas)"
 date: 2023-04-30T12:33:23.615Z
 preview: ""
 draft: false
-tags: [Node, Express, Apuntes]
+tags: [Node, Express]
 categories: [destacado]
 ---
 

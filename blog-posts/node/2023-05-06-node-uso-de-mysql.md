@@ -1,10 +1,10 @@
 ---
-title: "Node: uso de MySQL"
-description: "Apuntes de Node / Express y SQL"
+title: "Node - Librería para usar MySQL"
+description: "Node - Librería para usar MySQL"
 date: 2023-05-06T12:52:41.791Z
 preview: ""
 draft: false
-tags: [Node, Express, Bases de Datos, SQL, MySQL]
+tags: [Node, Bases de Datos, SQL, MySQL]
 categories: []
 ---
 
@@ -18,6 +18,4 @@ categories: []
 - [https://planetscale.com/](https://planetscale.com/)
 - Se puede usar una consola para ejecutar comandos SQL directamente: [https://planetscale.com/docs/concepts/web-console](https://planetscale.com/docs/concepts/web-console)
 
-### Referencia de comandos SQL
-
-- [https://www.w3schools.com/sql/default.asp](https://www.w3schools.com/sql/default.asp)
+**Actualización:** Planet Scale ya no tiene plan gratuito.

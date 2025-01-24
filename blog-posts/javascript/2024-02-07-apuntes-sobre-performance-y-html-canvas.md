@@ -1,5 +1,5 @@
 ---
-title: Apuntes sobre performance y HTML Canvas
+title: JavaScript - Apuntes sobre performance y HTML Canvas
 description: Apuntes sobre performance utilizando HTML Canvas
 date: 2024-02-07T12:35:13.760Z
 preview: ""

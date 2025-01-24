@@ -1,11 +1,11 @@
 ---
-title: Extensiones que utilizo en Google Chrome
+title: Extensiones para Google Chrome
 description: Extensiones que utilizo en Google Chrome
 date: 2023-04-20T21:31:58.625Z
 preview: ""
 draft: false
 tags:
-  - Extensiones del Navegador
+  - Extensiones
   - Google Chrome
 categories: []
 ---

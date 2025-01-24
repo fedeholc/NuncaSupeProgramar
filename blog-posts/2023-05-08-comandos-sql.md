@@ -1,6 +1,6 @@
 ---
-title: Comandos SQL
-description: "Comandos SQL"
+title: SQL - Comandos básicos
+description: "Comandos básicos SQL"
 date: 2023-05-08T14:50:14.232Z
 preview: ""
 draft: false

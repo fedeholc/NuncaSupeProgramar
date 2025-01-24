@@ -1,5 +1,5 @@
 ---
-title: Apuntes de Next JS
+title: Next JS - Apuntes varios
 description: Apuntes de Next JS
 date: 2023-04-20T20:47:45.879Z
 preview: ""
@@ -13,7 +13,7 @@ slug: apuntes-de-js
 
 Para crear un nuevo proyecto:
 
-```sh
+```bash
 npx create-next-app@latest
 ```
 

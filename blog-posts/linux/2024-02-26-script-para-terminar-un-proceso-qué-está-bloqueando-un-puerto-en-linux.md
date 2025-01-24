@@ -1,5 +1,5 @@
 ---
-title: Terminar un proceso que está bloqueando un puerto (Linux)
+title: "Linux - Terminar un proceso que está bloqueando un puerto"
 description: Script para terminar un proceso qué está bloqueando un puerto en Linux
 date: 2024-02-26T19:47:08.913Z
 preview: ""
@@ -7,7 +7,6 @@ draft: false
 tags:
   - Bash
   - Linux
-  - Script
 categories: []
 ---
 
