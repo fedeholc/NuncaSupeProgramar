@@ -64,6 +64,18 @@ export function getAllPostIds() {
     });
 }
 
+export function getPostIds() {
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  return fileNames
+    .filter((fileName) => {
+      return path.extname(fileName) === ".md";
+    })
+    .map((fileName) => {
+      return fileName.replace(/\.md$/, "");
+    });
+}
+
 export async function getPostData(id) {
   const fullPath = path.join(postsDirectory, `${decodeURI(id)}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
