@@ -17,11 +17,9 @@ export default async function TagList() {
 
   const allTagsArray = [...allTags];
 
-  const allTagsToCount = allPostsData
-    .map(({ tags }) => tags)
-    .flat()
-    //.map((tag) => tag.toLowerCase())
-    //.map((tag) => tag.charAt(0).toUpperCase() + tag.slice(1));
+  const allTagsToCount = allPostsData.map(({ tags }) => tags).flat();
+  //.map((tag) => tag.toLowerCase())
+  //.map((tag) => tag.charAt(0).toUpperCase() + tag.slice(1));
 
   function countTags(tag) {
     let count = 0;
@@ -33,13 +31,14 @@ export default async function TagList() {
     return count;
   }
 
-  const allTagsToShow = allTagsArray.map((tag) => {
+   const allTagsToShow = allTagsArray.map((tag) => {
     return {
       tag: tag,
       count: countTags(tag),
     };
   });
 
+ 
   async function rutear(data) {
     "use server";
 

@@ -20,7 +20,7 @@ export default async function Home() {
       <h2 className="apuntes__titulo">Apuntes destacados:</h2>
       <ul>
         {allPostsData
-          .filter(({ categories }) => categories.includes("destacado"))
+          .filter(({ categories }) => categories?.includes("destacado"))
           .filter(({ draft }) => draft === false)
           .map(({ id, date, title, draft }) => (
             <li className="apuntes__item" key={id}>

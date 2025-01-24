@@ -1,5 +1,5 @@
 import matter from "gray-matter";
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 import { remark } from "remark";
 import remarkParse from "remark-parse";
@@ -15,19 +15,18 @@ import rehypePrism from "rehype-prism-plus";
 const postsDirectory = path.join(process.cwd(), "blog-posts");
 
 export async function getSortedPostsData() {
-  // Get file names  under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
 
-  //el filter evita que si hay otro tipo de archivo tire error
-  const allPostsData = fileNames
-    .filter((fileName) => {
-      return path.extname(fileName) === ".md";
-    })
-    .map((fileName) => {
+  const fileNames = await fs.readdir(postsDirectory);
+  const filteredFileNames = fileNames.filter((fileName) => {
+    return path.extname(fileName) === ".md";
+  });
+
+  const allPostsData = await Promise.all(
+    filteredFileNames.map(async (fileName) => {
       const id = fileName.replace(/\.md$/, "");
 
       const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, "utf8");
+      const fileContents = await fs.readFile(fullPath, "utf8");
 
       const matterResult = JSON.parse(JSON.stringify(matter(fileContents)));
 
@@ -36,20 +35,24 @@ export async function getSortedPostsData() {
         id,
         ...matterResult.data,
       };
-    });
+    })
+  );
 
   // Sort posts by date
-  return allPostsData.sort((a, b) => {
+  let sortedPostsData = allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
     } else {
       return -1;
     }
   });
+
+  //console.log("sortedPostsData", sortedPostsData);
+  return sortedPostsData;
 }
 
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory);
+export async function getAllPostIds() {
+  const fileNames = await fs.readdir(postsDirectory);
 
   return fileNames
     .filter((fileName) => {
@@ -64,8 +67,8 @@ export function getAllPostIds() {
     });
 }
 
-export function getPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory);
+export async function getPostIds() {
+  const fileNames = await fs.readdir(postsDirectory);
 
   return fileNames
     .filter((fileName) => {
@@ -78,7 +81,7 @@ export function getPostIds() {
 
 export async function getPostData(id) {
   const fullPath = path.join(postsDirectory, `${decodeURI(id)}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const fileContents = await fs.readFile(fullPath, "utf8");
   const matterResult = JSON.parse(JSON.stringify(matter(fileContents)));
 
   /* esto era para transformar las imágenes del markdown (que se pasan como
