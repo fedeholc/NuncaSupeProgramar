@@ -3,6 +3,7 @@ import { getPostData, getSortedPostsData } from "../../lib/posts";
 import Link from "next/link";
 
 export default async function Tags({ params }) {
+  //TODO: esto es muy ineficiente, debería traer solo los posts con el tag que se está buscando, e incluso solo la info necesaria para mostrar en la lista
   const allPostsData = await getSortedPostsData();
 
   //decodeURI resuelve el problema de las tildes en los tags

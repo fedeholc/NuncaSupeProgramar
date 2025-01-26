@@ -2,7 +2,7 @@ import Date from "../../components/date";
 import { getPostData, getPostIds } from "../../lib/posts";
 import Link from "next/link";
 
-// TODO: ver que se pueden generar las páginas de tags con generateStaticParams
+// se pueden generar las páginas con generateStaticParams
 // https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params
 export async function generateStaticParams() {
   const postsIds = await getPostIds();
