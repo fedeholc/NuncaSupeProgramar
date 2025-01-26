@@ -10,6 +10,7 @@ tags:
   - SVG
   - Íconos
 categories: []
+slug: react-repositorio-de-iconos-svg-como-usarlos
 ---
 
 - **Tabler Icons** [https://tabler-icons.io/](https://tabler-icons.io/) Íconos SVG gratuitos y de uso libre.
