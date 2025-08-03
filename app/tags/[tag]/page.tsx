@@ -1,8 +1,8 @@
 import Date from "../../components/date";
-import { getPostData, getSortedPostsData } from "../../lib/posts";
+import { getSortedPostsData } from "../../lib/posts";
 import Link from "next/link";
 
-export default async function Tags({ params }) {
+export default async function Tags({ params }: { params: { tag: string } }) {
   //TODO: esto es muy ineficiente, debería traer solo los posts con el tag que se está buscando, e incluso solo la info necesaria para mostrar en la lista
   const allPostsData = await getSortedPostsData();
 
@@ -17,11 +17,11 @@ export default async function Tags({ params }) {
         {allPostsData
           .filter(({ tags }) =>
             tags
-              .map((e) => e.toLowerCase())
+              .map((e: string) => e.toLowerCase())
               .includes(decodeURI(params.tag).toLowerCase())
           )
           .filter(({ draft }) => draft === false)
-          .map(({ id, date, title, draft }) => (
+          .map(({ id, date, title }) => (
             <li className="apuntes__item" key={id}>
               <Link href={`/posts/${id}`}>{title}</Link>
               <br />

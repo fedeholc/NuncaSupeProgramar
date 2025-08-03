@@ -7,19 +7,19 @@ import Link from "next/link";
 export async function generateStaticParams() {
   const postsIds = await getPostIds();
 
-  let ids = postsIds?.map((post) => ({
+  const ids = postsIds?.map((post) => ({
     id: post,
   }));
   return ids;
 }
 
-export default async function Post({ params }) {
+export default async function Post({ params }: { params: { id: string } }) {
   const { id } = await params;
 
   const postData = await getPostData(id);
 
   let tags = "";
-  postData.tags.forEach((tag, index) => {
+  postData.tags.forEach((tag: string) => {
     tags = tags + tag + ", ";
   });
   tags = tags.slice(0, tags.length - 2); // le quita la coma y el espacio a la última */
@@ -38,7 +38,7 @@ export default async function Post({ params }) {
       <div className="post__tags">
         Tags:&nbsp;
         {tags &&
-          postData.tags.map((tag) => {
+          postData.tags.map((tag: string) => {
             return (
               <div key={tag}>
                 <Link href={`/tags/${tag.toLowerCase()}`}>{tag}</Link>

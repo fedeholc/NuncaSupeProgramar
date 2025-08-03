@@ -7,13 +7,13 @@ export default function Logo() {
       <div className={logo.logo__container}>
         <div className={logo.logo__titulo}>
           <Link href="/">
-            <span className={logo.logo__colorRosa}>{"<"}</span>
-            NuncaSupeProgramar
-            <span className={logo.logo__colorCeleste}>{"/"}</span>
-            <span className={logo.logo__colorRosa}>{">"}</span>
+            <span className={logo.logo__colorRosa}>{">> "}</span>
+            <span>err0r</span>
+            <span className={logo.logo__colorCeleste}>{""}</span>
+            <span className={logo.logo__colorRosa}>{" <<"}</span>
           </Link>
         </div>
-        <div className={logo.logo__descripcion}>{metadata.description} 👾</div>
+        <div className={logo.logo__descripcion}>{metadata.description} 🐈‍⬛</div>
       </div>
     </>
   );

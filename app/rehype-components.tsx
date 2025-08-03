@@ -13,7 +13,7 @@ export type ComponentFunction = (
 export interface ComponentContext {
   tree: Root;
   vfile: VFile;
-  processor: any;
+  processor: Processor;
 }
 
 interface Options {
@@ -22,16 +22,14 @@ interface Options {
 
 const rehypeComponents: Plugin<[Options], Root, Root> = function (options) {
   const { components = {} } = options;
-  const processor = this;
   return (tree, vfile) => {
-    const context: ComponentContext = { tree, vfile, processor };
+    const context: ComponentContext = { tree, vfile, processor: this };
     visit(tree, (node, index, parent) => {
       if (!isElement(node)) {
         return;
       }
-      node.properties;
       const component = components[node.tagName];
-      if (component && parent && index !== null) {
+      if (component && parent && typeof index === 'number') {
         const replacedNode = component(
           node.properties || {},
           node.children,

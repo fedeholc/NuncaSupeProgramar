@@ -1,6 +1,6 @@
 import { getSortedPostsData } from "../lib/posts";
-import { redirect } from "next/navigation";
-import TagSearch from "./tagsearch";
+/* import { redirect } from "next/navigation";
+ */import TagSearch from "./tagsearch";
 import Link from "next/link";
 export default async function TagList() {
   const allPostsData = await getSortedPostsData();
@@ -21,7 +21,7 @@ export default async function TagList() {
   //.map((tag) => tag.toLowerCase())
   //.map((tag) => tag.charAt(0).toUpperCase() + tag.slice(1));
 
-  function countTags(tag) {
+  function countTags(tag: string) {
     let count = 0;
     allTagsToCount.map((postTag) => {
       if (postTag == tag) {
@@ -39,14 +39,18 @@ export default async function TagList() {
   });
 
  
-  async function rutear(data) {
+ /*  interface RutearFormData extends FormData {
+    get(name: "tagInput"): string | null;
+  }
+ */
+/*   async function rutear(data: RutearFormData): Promise<void> {
     "use server";
 
     if (data.get("tagInput") != "") {
-      let ruta = encodeURI(`/tags/${data.get("tagInput")}`);
+      const ruta = encodeURI(`/tags/${data.get("tagInput")}`);
       redirect(ruta);
     }
-  }
+  } */
 
   return (
     <div>

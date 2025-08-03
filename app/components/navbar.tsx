@@ -1,6 +1,6 @@
 import Logo from "./logo";
 import navbar from "./navbar.module.css";
-import { FaGithub, FaLinkedin, FaMail } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Link from "next/link";
 
