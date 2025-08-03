@@ -1,14 +1,15 @@
 import { parseISO, format } from "date-fns";
-import spanishLocale from "date-fns/locale/es";
+import { es } from "date-fns/locale/es";
 
-export default function Date({ dateString }) {
+export default function Date({ dateString }: { dateString: string }) {
   const date = parseISO(dateString);
 
   return (
     <time dateTime={dateString}>
       {format(date, "d 'de' LLLL 'de' yyyy", {
-        locale: spanishLocale,
-      })} {/* TODO: ver cómo hacer para que cambie de idioma según IP/país */}
+        locale: es,
+      })}{" "}
+      {/* TODO: ver cómo hacer para que cambie de idioma según IP/país */}
     </time>
   );
 }

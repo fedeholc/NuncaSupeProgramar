@@ -3,9 +3,9 @@ import { getSortedPostsData } from "./lib/posts";
 export default async function sitemap() {
   const allPostsData = await getSortedPostsData();
 
-  let sitemap = allPostsData
+  const sitemap = allPostsData
     .filter(({ draft }) => draft === false)
-    .map(({ id, date, title, categories }) => {
+    .map(({ id, date, /* title, categories */ }) => {
       return {
         url: `https://nsp.fedeholc.ar/posts/${id}`,
         lastModified: date,
