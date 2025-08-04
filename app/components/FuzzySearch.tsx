@@ -245,7 +245,11 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
   return (
     /* TODO: arreglar el ancho en la grid principal, hay que ponerle width a la columna */
     <div
-      style={{ display: "grid", gridTemplateRows: "max-content 70vh", height: "100%" }}
+      style={{
+        display: "grid",
+        gridTemplateRows: "max-content 1fr",
+        height: "100%",
+      }}
     >
       <div>
         <input
@@ -271,6 +275,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
           gridTemplateRows: "1fr 1fr",
           gap: "1rem",
           height: "100%",
+          minHeight: 0,
         }}
       >
         <div
@@ -282,6 +287,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
             borderRadius: "12px",
             padding: "1rem",
             height: "100%",
+            minHeight: 0,
             overflow: "auto",
           }}
         >
@@ -357,10 +363,14 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
                 backgroundColor: "var(--background-color)",
                 color: "var(--text-color)",
                 height: "100%",
+                minHeight: 0,
                 overflow: "auto",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               <div
+                style={{ height: "100%", minHeight: 0, overflow: "auto" }}
                 dangerouslySetInnerHTML={{
                   __html:
                     processedResults[selectedPostIndex]?.highlightedFragment,
