@@ -35,6 +35,7 @@
   --light-th-main-color-10: rgba(0, 168, 0, 0.1);
   --light-th-main-color-25: rgba(0, 168, 0, 0.25);
   --light-th-secondary-color: rgba(255, 174, 0, 1);
+  --light-th-search-selected: #cacaca;
 
   --light-th-border-color: var(--light-th-main-color);
   --light-th-border-color-secondary: var(--light-th-secondary-color);
@@ -51,6 +52,7 @@
   --lightlow-th-main-color-10: rgba(0, 168, 0, 0.1);
   --lightlow-th-main-color-25: rgba(0, 168, 0, 0.25);
   --lightlow-th-secondary-color: rgba(255, 174, 0, 0.7);
+  --lightlow-th-search-selected: #d8d8d8;
 
   --lightlow-th-border-color: var(--lightlow-th-main-color);
   --lightlow-th-border-color-secondary: var(--lightlow-th-secondary-color);
@@ -66,6 +68,7 @@
   --dark-th-main-color-50: rgba(0, 255, 0, 0.5);
   --dark-th-main-color-25: rgba(0, 255, 0, 0.25);
   --dark-th-secondary-color: rgba(255, 174, 0, 1);
+  --dark-th-search-selected: #2c2c2c;
 
   --dark-th-border-color: var(--dark-th-main-color);
   --dark-th-border-color-secondary: var(--dark-th-secondary-color);
@@ -98,20 +101,17 @@
 /* default light th */
 :root {
 
-  --main-color: var(--light-th-main-color);
-  --main-color-10: var(--light-th-main-color-10);
-  --secondary-color: var(--light-th-secondary-color);
-
   --background-color: var(--light-th-background-color);
   --text-color: var(--light-th-text-color);
 
-  --border-color: var(--main-color);
+  --border-color: var(--light-th-border-color);
   --border-color-secondary: var(--light-th-border-color-secondary);
-  --shadow-color: var(--main-color-10);
+  --shadow-color: var(--light-th-shadow-color);
+  --search-selected: var(--light-th-search-selected);
 
   --link-color: var(--light-th-link-color);
-  --linkUnderline: var(--light-linkUnderline);
-  --linkUnderlineHover: var(--light-linkUnderlineHover);
+  --linkUnderline: var(--light-th-linkUnderline);
+  --linkUnderlineHover: var(--light-th-linkUnderlineHover);
 }
 
 @media (prefers-color-scheme: light) {
@@ -123,6 +123,7 @@
     --border-color: var(--light-th-border-color);
     --border-color-secondary: var(--light-th-border-color-secondary);
     --shadow-color: var(--light-th-shadow-color);
+    --search-selected: var(--light-th-search-selected);
 
     --link-color: var(--light-th-link-color);
     --linkUnderline: var(--light-th-linkUnderline);
@@ -139,6 +140,7 @@
     --border-color: var(--dark-th-border-color);
     --border-color-secondary: var(--dark-th-secondary-color);
     --shadow-color: var(--dark-th-shadow-color);
+    --search-selected: var(--dark-th-search-selected);
 
     --link-color: var(--dark-th-link-color);
     --linkUnderline: var(--dark-th-linkUnderline);
@@ -156,6 +158,7 @@
     --border-color: var(--light-th-border-color);
     --border-color-secondary: var(--light-th-border-color-secondary);
     --shadow-color: var(--light-th-shadow-color);
+    --search-selected: var(--light-th-search-selected);
 
     --link-color: var(--light-th-link-color);
     --linkUnderline: var(--light-th-linkUnderline);
@@ -191,6 +194,8 @@ html[data-theme="light"],
 
   --border-color: var(--light-th-border-color);
   --shadow-color: var(--light-th-shadow-color);
+  --border-color-secondary: var(--light-th-border-color-secondary);
+  --search-selected: var(--light-th-search-selected);
 
   --link-color: var(--light-th-link-color);
   --linkUnderline: var(--light-th-linkUnderline);
@@ -207,6 +212,7 @@ html[data-theme="dark"],
   --border-color: var(--dark-th-border-color);
   --border-color-secondary: var(--dark-th-secondary-color);
   --shadow-color: var(--dark-th-shadow-color);
+  --search-selected: var(--dark-th-search-selected);
 
   --linkUnderline: var(--dark-th-linkUnderline);
   --linkUnderlineHover: var(--dark-th-linkUnderlineHover);
@@ -220,6 +226,7 @@ html[data-theme="low-contrast"],
   --border-color: var(--lightlow-th-border-color);
   --border-color-secondary: var(--lightlow-th-border-color-secondary);
   --shadow-color: var(--lightlow-th-shadow-color);
+  --search-selected: var(--lightlow-th-search-selected);
 
   --link-color: var(--lightlow-th-link-color);
   --linkUnderline: var(--lightlow-th-linkUnderline);
