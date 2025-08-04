@@ -1,27 +1,18 @@
 import Link from "next/link";
 import Date from "./components/date";
 import { getAllPostsContentForFuzzy, getSortedPostsData } from "./lib/posts";
-import FuzzySearch from "./components/FuzzySearch";
+ import HomeClient from "./components/HomeClient";
 
 export default async function Home() {
   const allPostsData = await getSortedPostsData();
   const allPostContent = await getAllPostsContentForFuzzy();
 
-  //set remueve los duplicados
-  /*   const allTags = new Set(allPostsData.map(({tags}) => tags).flat());
-   */
-
   return (
     <div>
-      <h2 className="apuntes__titulo">Buscar apuntes:</h2>
-      <FuzzySearch
+      <HomeClient
         posts={allPostContent.filter(({ draft }) => draft === false)}
       />
       <section className="layout__main">
-        {/*  <h2 className="apuntes__titulo">tags:</h2>
-        <div>{`Tags: `}
-          {[...allTags].map((tag) => (`${tag}, `))}
-        </div> */}
         <br />
         <h2 className="apuntes__titulo">Apuntes destacados:</h2>
         <ul>

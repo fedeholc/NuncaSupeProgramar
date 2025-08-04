@@ -10,7 +10,7 @@ import remarkBreaks from "remark-breaks";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 
-type Post = {
+export type Post = {
   id: string;
   date: string;
   title: string;
@@ -21,11 +21,18 @@ type Post = {
 
 interface FuzzySearchProps {
   posts: Post[];
+  isActive?: boolean;
 }
 
-export default function FuzzySearch({ posts }: FuzzySearchProps) {
+export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  // Enfocar el input cuando el modal se abre
+  useEffect(() => {
+    if (isActive && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isActive]);
 
   // Función para extraer fragmento relevante y resaltar coincidencias
   const getHighlightedFragment = (
@@ -202,14 +209,9 @@ export default function FuzzySearch({ posts }: FuzzySearchProps) {
   const [selectedPostIndex, setSelectedPostIndex] = useState<number | null>(
     null
   );
-  // Shortcut Ctrl+K para enfocar el input
+  // Shortcut Arrow navigation and Enter
   useEffect(() => {
     const handleShortcut = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        inputRef.current?.focus();
-      }
-
       if (e.key === "ArrowDown") {
         e.preventDefault();
         if (
@@ -219,14 +221,12 @@ export default function FuzzySearch({ posts }: FuzzySearchProps) {
           setSelectedPostIndex(selectedPostIndex + 1);
         }
       }
-
       if (e.key === "ArrowUp") {
         e.preventDefault();
         if (selectedPostIndex !== null && selectedPostIndex > 0) {
           setSelectedPostIndex(selectedPostIndex - 1);
         }
       }
-
       if (e.key === "Enter" && selectedPostIndex !== null) {
         const post = processedResults[selectedPostIndex];
         if (post) {
@@ -244,119 +244,131 @@ export default function FuzzySearch({ posts }: FuzzySearchProps) {
 
   return (
     /* TODO: arreglar el ancho en la grid principal, hay que ponerle width a la columna */
-    <div style={{ maxWidth: "800px", width: "100%", margin: "0 auto" }}>
-      <input
-        ref={inputRef}
-        type="text"
-        placeholder="Buscar apuntes..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        style={{
-          padding: "1rem",
-          width: "100%",
-          marginBottom: "1rem",
-          border: "3px solid transparent",
-          outline: "3px solid var(--border-color)",
-          borderRadius: "12px",
-          fontSize: "1.2rem",
-        }}
-      />
+    <div
+      style={{ display: "grid", gridTemplateRows: "max-content 70vh", height: "100%" }}
+    >
+      <div>
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder="Buscar apuntes..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          style={{
+            padding: "1rem",
+            width: "100%",
+            marginBottom: "1rem",
+            border: "3px solid transparent",
+            outline: "3px solid var(--border-color)",
+            borderRadius: "12px",
+            fontSize: "1.2rem",
+          }}
+        />
+      </div>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "0.5rem",
-          outline: "3px solid var(--border-color)",
-          borderRadius: "12px",
-          padding: "1rem",
-          maxHeight: "30vh",
-          overflowY: "auto",
+          display: "grid",
+          gridTemplateRows: "1fr 1fr",
+          gap: "1rem",
+          height: "100%",
         }}
       >
-        {processedResults.map(
-          ({ id, /* date, */ title /* highlightedFragment */ }, index) => (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            outline: "3px solid var(--border-color)",
+            borderRadius: "12px",
+            padding: "1rem",
+            height: "100%",
+            overflow: "auto",
+          }}
+        >
+          {processedResults.map(
+            ({ id, /* date, */ title /* highlightedFragment */ }, index) => (
+              <div
+                key={id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <div
+                  style={{
+                    border: `1px solid ${
+                      selectedPostIndex === index
+                        ? "var(--search-selected)"
+                        : "transparent"
+                    }`,
+                    backgroundColor: `${
+                      selectedPostIndex === index
+                        ? "var(--search-selected)"
+                        : "var(--background-color)"
+                    }`,
+                    padding: "0.2rem 0.5rem",
+                    color: "var(--text-color)",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setSelectedPostIndex(index)}
+                  onMouseEnter={() => setSelectedPostIndex(index)}
+                >
+                  <Link href={`/posts/${id}`}>
+                    <span
+                      style={{
+                        color: "var(--text-color)",
+                        fontWeight: "600",
+                      }}
+                    >
+                      {title}
+                    </span>
+                  </Link>
+                </div>
+                {/*  {highlightedFragment && (
+                  <div
+                    style={{
+                      border: "1px solid var(--text-color)",
+                      padding: "1rem",
+                    }}
+                  >
+                    <div
+                      style={{ color: "#666", fontSize: "0.95em" }}
+                      dangerouslySetInnerHTML={{ __html: highlightedFragment }}
+                    />
+                  </div>
+                )} */}
+                {/*    <br />
+              <small>
+                <Date dateString={date} />
+              </small> */}
+              </div>
+            )
+          )}
+        </div>
+        {/*     <div>Selected post: {selectedPostIndex}</div> */}
+        {selectedPostIndex !== null &&
+          processedResults[selectedPostIndex]?.highlightedFragment && (
             <div
-              key={id}
               style={{
-                display: "flex",
-                flexDirection: "column",
+                border: "2px dashed var(--border-color-secondary)",
+                padding: "1rem",
+                marginTop: "1rem",
+                borderRadius: "12px",
+                backgroundColor: "var(--background-color)",
+                color: "var(--text-color)",
+                height: "100%",
+                overflow: "auto",
               }}
             >
               <div
-                style={{
-                  border: `1px solid ${
-                    selectedPostIndex === index
-                      ? "var(--search-selected)"
-                      : "transparent"
-                  }`,
-                  backgroundColor: `${
-                    selectedPostIndex === index
-                      ? "var(--search-selected)"
-                      : "var(--background-color)"
-                  }`,
-                  padding: "0.2rem 0.5rem",
-                  color: "var(--text-color)",
-                  cursor: "pointer",
+                dangerouslySetInnerHTML={{
+                  __html:
+                    processedResults[selectedPostIndex]?.highlightedFragment,
                 }}
-                onClick={() => setSelectedPostIndex(index)}
-                onMouseEnter={() => setSelectedPostIndex(index)}
-              >
-                <Link href={`/posts/${id}`}>
-                  <span
-                    style={{
-                      color: "var(--text-color)",
-                      fontWeight: "600",
-                    }}
-                  >
-                    {title}
-                  </span>
-                </Link>
-              </div>
-
-              {/*  {highlightedFragment && (
-                <div
-                  style={{
-                    border: "1px solid var(--text-color)",
-
-                    padding: "1rem",
-                  }}
-                >
-                  <div
-                    style={{ color: "#666", fontSize: "0.95em" }}
-                    dangerouslySetInnerHTML={{ __html: highlightedFragment }}
-                  />
-                </div>
-              )} */}
-              {/*    <br />
-            <small>
-              <Date dateString={date} />
-            </small> */}
+              />
             </div>
-          )
-        )}
+          )}
       </div>
-      {/*     <div>Selected post: {selectedPostIndex}</div> */}
-      {selectedPostIndex !== null &&
-        processedResults[selectedPostIndex]?.highlightedFragment && (
-          <div
-            style={{
-              border: "2px dashed var(--secondary-color)",
-
-              padding: "1rem",
-              marginTop: "1rem",
-              borderRadius: "12px",
-              backgroundColor: "var(--background-color)",
-              color: "var(--text-color)",
-            }}
-          >
-            <div
-               dangerouslySetInnerHTML={{
-                __html:
-                  processedResults[selectedPostIndex]?.highlightedFragment,
-              }}
-            />
-          </div>
-        )}
     </div>
   );
 }
