@@ -288,109 +288,119 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
           minHeight: 0,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.5rem",
-            outline: "2px solid var(--border-color)",
-            borderRadius: "8px",
-            padding: "1rem 0.5rem 1rem 1rem",
-            height: "100%",
-            minHeight: 0,
-          }}
-        >
-          <div style={{ overflowY: "auto" }}>
-            {processedResults.map(
-              ({ id, /* date, */ title /* highlightedFragment */ }, index) => (
-                <div
-                  key={id}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    paddingRight: "0.5rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      border: `1px solid ${
-                        selectedPostIndex === index
-                          ? "var(--search-selected)"
-                          : "transparent"
-                      }`,
-                      backgroundColor: `${
-                        selectedPostIndex === index
-                          ? "var(--search-selected)"
-                          : "var(--background-color)"
-                      }`,
-                      padding: "0.2rem 0.5rem",
-                      color: "var(--text-color)",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setSelectedPostIndex(index)}
-                    // onMouseEnter={() => setSelectedPostIndex(index)}
-                  >
-                    <Link href={`/posts/${id}`}>
-                      <span
-                        style={{
-                          color: "var(--text-color)",
-                          fontWeight: "600",
-                        }}
-                      >
-                        {title}
-                      </span>
-                    </Link>
-                  </div>
-                  {/*  {highlightedFragment && (
-                    <div
-                      style={{
-                        border: "1px solid var(--text-color)",
-                        padding: "1rem",
-                      }}
-                    >
-                      <div
-                        style={{ color: "#666", fontSize: "0.95em" }}
-                        dangerouslySetInnerHTML={{ __html: highlightedFragment }}
-                      />
-                    </div>
-                  )} */}
-                  {/*    <br />
-                <small>
-                  <Date dateString={date} />
-                </small> */}
-                </div>
-              )
-            )}
-          </div>
-        </div>
-        {/*     <div>Selected post: {selectedPostIndex}</div> */}
-        {selectedPostIndex !== null &&
-          processedResults[selectedPostIndex]?.highlightedFragment && (
+        <PostsList
+          postsList={processedResults}
+          selectedPostIndex={selectedPostIndex}
+          setSelectedPostIndex={setSelectedPostIndex}
+        />
+
+        {selectedPostIndex !== null && (
+          <PostPreview
+            postContent={
+              processedResults[selectedPostIndex]?.highlightedFragment
+            }
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+function PostsList({
+  postsList,
+  selectedPostIndex,
+  setSelectedPostIndex,
+}: {
+  postsList: Array<Post & { highlightedFragment?: string }>;
+  selectedPostIndex: number | null;
+  setSelectedPostIndex: (index: number | null) => void;
+}) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "0.5rem",
+        outline: "2px solid var(--border-color)",
+        borderRadius: "8px",
+        padding: "1rem 0.5rem 1rem 1rem",
+        height: "100%",
+        minHeight: 0,
+      }}
+    >
+      <div style={{ overflowY: "auto" }}>
+        {postsList.map(
+          ({ id, /* date, */ title /* highlightedFragment */ }, index) => (
             <div
+              key={id}
               style={{
-                border: "2px dashed var(--border-color-secondary)",
-                padding: "1rem",
-                marginTop: "1rem",
-                borderRadius: "12px",
-                backgroundColor: "var(--background-color)",
-                color: "var(--text-color)",
-                height: "100%",
-                minHeight: 0,
-                overflow: "auto",
                 display: "flex",
                 flexDirection: "column",
+                paddingRight: "0.5rem",
               }}
             >
               <div
-                style={{ height: "100%", minHeight: 0, overflow: "auto" }}
-                dangerouslySetInnerHTML={{
-                  __html:
-                    processedResults[selectedPostIndex]?.highlightedFragment,
+                style={{
+                  border: `1px solid ${
+                    selectedPostIndex === index
+                      ? "var(--search-selected)"
+                      : "transparent"
+                  }`,
+                  backgroundColor: `${
+                    selectedPostIndex === index
+                      ? "var(--search-selected)"
+                      : "var(--background-color)"
+                  }`,
+                  padding: "0.2rem 0.5rem",
+                  color: "var(--text-color)",
+                  cursor: "pointer",
                 }}
-              />
+                onClick={() => setSelectedPostIndex(index)}
+                // onMouseEnter={() => setSelectedPostIndex(index)}
+              >
+                <Link href={`/posts/${id}`}>
+                  <span
+                    style={{
+                      color: "var(--text-color)",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {title}
+                  </span>
+                </Link>
+              </div>
             </div>
-          )}
+          )
+        )}
       </div>
+    </div>
+  );
+}
+
+function PostPreview({ postContent }: { postContent: string | undefined }) {
+  if (!postContent) return null;
+  return (
+    <div
+      style={{
+        border: "2px dashed var(--border-color-secondary)",
+        padding: "1rem",
+        marginTop: "1rem",
+        borderRadius: "12px",
+        backgroundColor: "var(--background-color)",
+        color: "var(--text-color)",
+        height: "100%",
+        minHeight: 0,
+        overflow: "auto",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <div
+        style={{ height: "100%", minHeight: 0, overflow: "auto" }}
+        dangerouslySetInnerHTML={{
+          __html: postContent,
+        }}
+      />
     </div>
   );
 }
