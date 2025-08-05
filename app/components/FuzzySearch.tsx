@@ -34,6 +34,17 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
     }
   }, [isActive]);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   // Función para extraer fragmento relevante y resaltar coincidencias
   const getHighlightedFragment = (
     text: string,
@@ -297,7 +308,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    paddingRight: "0.5rem"
+                    paddingRight: "0.5rem",
                   }}
                 >
                   <div
