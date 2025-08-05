@@ -243,7 +243,6 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
   console.log(posts);
 
   return (
-    /* TODO: arreglar el ancho en la grid principal, hay que ponerle width a la columna */
     <div
       style={{
         display: "grid",
@@ -262,9 +261,9 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
             padding: "1rem",
             width: "100%",
             marginBottom: "1rem",
-            border: "3px solid transparent",
-            outline: "3px solid var(--border-color)",
-            borderRadius: "12px",
+            border: "2px solid transparent",
+            outline: "2px solid var(--border-color)",
+            borderRadius: "8px",
             fontSize: "1.2rem",
           }}
         />
@@ -272,7 +271,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
       <div
         style={{
           display: "grid",
-          gridTemplateRows: "1fr 1fr",
+          gridTemplateRows: "1fr 2fr",
           gap: "1rem",
           height: "100%",
           minHeight: 0,
@@ -283,73 +282,75 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
             display: "flex",
             flexDirection: "column",
             gap: "0.5rem",
-            outline: "3px solid var(--border-color)",
-            borderRadius: "12px",
-            padding: "1rem",
+            outline: "2px solid var(--border-color)",
+            borderRadius: "8px",
+            padding: "1rem 0.5rem 1rem 1rem",
             height: "100%",
             minHeight: 0,
-            overflow: "auto",
           }}
         >
-          {processedResults.map(
-            ({ id, /* date, */ title /* highlightedFragment */ }, index) => (
-              <div
-                key={id}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
+          <div style={{ overflowY: "auto" }}>
+            {processedResults.map(
+              ({ id, /* date, */ title /* highlightedFragment */ }, index) => (
                 <div
+                  key={id}
                   style={{
-                    border: `1px solid ${
-                      selectedPostIndex === index
-                        ? "var(--search-selected)"
-                        : "transparent"
-                    }`,
-                    backgroundColor: `${
-                      selectedPostIndex === index
-                        ? "var(--search-selected)"
-                        : "var(--background-color)"
-                    }`,
-                    padding: "0.2rem 0.5rem",
-                    color: "var(--text-color)",
-                    cursor: "pointer",
+                    display: "flex",
+                    flexDirection: "column",
+                    paddingRight: "0.5rem"
                   }}
-                  onClick={() => setSelectedPostIndex(index)}
-                  onMouseEnter={() => setSelectedPostIndex(index)}
                 >
-                  <Link href={`/posts/${id}`}>
-                    <span
-                      style={{
-                        color: "var(--text-color)",
-                        fontWeight: "600",
-                      }}
-                    >
-                      {title}
-                    </span>
-                  </Link>
-                </div>
-                {/*  {highlightedFragment && (
                   <div
                     style={{
-                      border: "1px solid var(--text-color)",
-                      padding: "1rem",
+                      border: `1px solid ${
+                        selectedPostIndex === index
+                          ? "var(--search-selected)"
+                          : "transparent"
+                      }`,
+                      backgroundColor: `${
+                        selectedPostIndex === index
+                          ? "var(--search-selected)"
+                          : "var(--background-color)"
+                      }`,
+                      padding: "0.2rem 0.5rem",
+                      color: "var(--text-color)",
+                      cursor: "pointer",
                     }}
+                    onClick={() => setSelectedPostIndex(index)}
+                    // onMouseEnter={() => setSelectedPostIndex(index)}
                   >
-                    <div
-                      style={{ color: "#666", fontSize: "0.95em" }}
-                      dangerouslySetInnerHTML={{ __html: highlightedFragment }}
-                    />
+                    <Link href={`/posts/${id}`}>
+                      <span
+                        style={{
+                          color: "var(--text-color)",
+                          fontWeight: "600",
+                        }}
+                      >
+                        {title}
+                      </span>
+                    </Link>
                   </div>
-                )} */}
-                {/*    <br />
-              <small>
-                <Date dateString={date} />
-              </small> */}
-              </div>
-            )
-          )}
+                  {/*  {highlightedFragment && (
+                    <div
+                      style={{
+                        border: "1px solid var(--text-color)",
+                        padding: "1rem",
+                      }}
+                    >
+                      <div
+                        style={{ color: "#666", fontSize: "0.95em" }}
+                        dangerouslySetInnerHTML={{ __html: highlightedFragment }}
+                      />
+                    </div>
+                  )} */}
+                  {/*    <br />
+                <small>
+                  <Date dateString={date} />
+                </small> */}
+                </div>
+              )
+            )}
+          </div>
         </div>
         {/*     <div>Selected post: {selectedPostIndex}</div> */}
         {selectedPostIndex !== null &&
