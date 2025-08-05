@@ -329,50 +329,80 @@ function PostsList({
       }}
     >
       <div style={{ overflowY: "auto" }}>
-        {postsList.map(
-          ({ id, /* date, */ title /* highlightedFragment */ }, index) => (
-            <div
-              key={id}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                paddingRight: "0.5rem",
-              }}
-            >
-              <div
-                style={{
-                  border: `1px solid ${
-                    selectedPostIndex === index
-                      ? "var(--search-selected)"
-                      : "transparent"
-                  }`,
-                  backgroundColor: `${
-                    selectedPostIndex === index
-                      ? "var(--search-selected)"
-                      : "var(--background-color)"
-                  }`,
-                  padding: "0.2rem 0.5rem",
-                  color: "var(--text-color)",
-                  cursor: "pointer",
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            paddingRight: "0.5rem",
+          }}
+        >
+          {postsList.map(
+            ({ id, /* date, */ title /* highlightedFragment */ }, index) => (
+              <PostListItem
+                key={id}
+                id={id}
+                title={title}
+                isSelected={selectedPostIndex === index}
+                onClick={() => {
+                  setSelectedPostIndex(index);
                 }}
-                onClick={() => setSelectedPostIndex(index)}
-                // onMouseEnter={() => setSelectedPostIndex(index)}
-              >
-                <Link href={`/posts/${id}`}>
-                  <span
-                    style={{
-                      color: "var(--text-color)",
-                      fontWeight: "600",
-                    }}
-                  >
-                    {title}
-                  </span>
-                </Link>
-              </div>
-            </div>
-          )
-        )}
+              />
+            )
+          )}
+        </div>
       </div>
+    </div>
+  );
+}
+
+function PostListItem({
+  isSelected,
+  title,
+  onClick,
+  id,
+}: {
+  isSelected: boolean;
+  title: string;
+  onClick: () => void;
+  id: string;
+}) {
+  return (
+    <div
+      style={{
+        border: `1px solid ${
+          isSelected ? "var(--search-selected)" : "transparent"
+        }`,
+        backgroundColor: `${
+          isSelected ? "var(--search-selected)" : "var(--background-color)"
+        }`,
+        padding: "0.2rem 0.5rem",
+        color: "var(--text-color)",
+        cursor: "pointer",
+      }}
+      onClick={onClick}
+    >
+      {isSelected && (
+        <Link href={`/posts/${id}`}>
+          <span
+            style={{
+              color: "var(--text-color)",
+              fontWeight: "600",
+            }}
+          >
+            {title}
+          </span>
+        </Link>
+      )}
+      {!isSelected && (
+        <span
+          style={{
+            color: "var(--text-color)",
+            fontWeight: "600",
+          }}
+        >
+          {title}
+        </span>
+      )}
     </div>
   );
 }
