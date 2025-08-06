@@ -9,6 +9,7 @@ import { remark } from "remark";
 import remarkBreaks from "remark-breaks";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import { LuColumns2, LuRows2 } from "react-icons/lu";
 
 export type Post = {
   id: string;
@@ -261,7 +262,14 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
         height: "100%",
       }}
     >
-      <div>
+      <div
+        style={{
+          padding: "1rem",
+          display: "flex",
+          alignItems: "center",
+          gap: "1rem",
+        }}
+      >
         <input
           ref={inputRef}
           type="text"
@@ -271,18 +279,20 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
           style={{
             padding: "1rem",
             width: "100%",
-            marginBottom: "1rem",
             border: "2px solid transparent",
             outline: "2px solid var(--border-color)",
             borderRadius: "8px",
             fontSize: "1.2rem",
           }}
         />
+        <LuColumns2 size={30}></LuColumns2>
+        <LuRows2 size={30}></LuRows2>
       </div>
       <div
         style={{
           display: "grid",
-          gridTemplateRows: "1fr 2fr",
+          /*  gridTemplateRows: "1fr 2fr", */
+          gridTemplateColumns: "1fr 2fr",
           gap: "1rem",
           height: "100%",
           minHeight: 0,
@@ -428,7 +438,7 @@ function PostPreview({ postContent }: { postContent: string | undefined }) {
       style={{
         border: "2px dashed var(--border-color-secondary)",
         padding: "1rem",
-        marginTop: "1rem",
+        /* marginTop: "1rem", */
         borderRadius: "12px",
         backgroundColor: "var(--background-color)",
         color: "var(--text-color)",
