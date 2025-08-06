@@ -27,7 +27,15 @@ interface FuzzySearchProps {
 
 export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
   const [query, setQuery] = useState("");
+  const [processedResults, setProcessedResults] = useState<
+    Array<
+      Post & {
+        highlightedSnippet?: string;
+      }
+    >
+  >([]);
   const inputRef = useRef<HTMLInputElement>(null);
+
   // Enfocar el input cuando el modal se abre
   useEffect(() => {
     if (isActive && inputRef.current) {
@@ -35,6 +43,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
     }
   }, [isActive]);
 
+  // Atajo de teclado para abrir el input
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key.toLowerCase() === "k") {
@@ -47,10 +56,10 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
   }, []);
 
   // Función para extraer fragmento relevante y resaltar coincidencias
-  const getHighlightedFragment = (
+  function getFirstSnippet(
     text: string,
     matches: Array<{ indices?: readonly [number, number][] }>
-  ) => {
+  ) {
     if (!matches || matches.length === 0) {
       return text.slice(0, 200) + (text.length > 200 ? "..." : "");
     }
@@ -85,10 +94,10 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
     if (fragmentEnd < text.length) fragment = fragment + "...";
 
     return fragment;
-  };
+  }
 
   // Función para resaltar las coincidencias en un texto
-  const highlightMatches = (text: string, searchQuery: string) => {
+  function addHighlighting(text: string, searchQuery: string) {
     if (!searchQuery.trim()) return text;
 
     const regex = new RegExp(
@@ -99,7 +108,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
       regex,
       '<mark style="background-color: #ffeb3b; padding: 0 2px;">$1</mark>'
     );
-  };
+  }
 
   const fuse = useMemo(
     () =>
@@ -120,103 +129,80 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
     [posts]
   );
 
-  const results: Array<Post & { highlightedFragment?: string }> =
-    useMemo(() => {
-      if (!query || query.trim().length < 2) return [];
+  const searchResults: Array<Post & { snippet?: string }> = useMemo(() => {
+    if (!query || query.trim().length < 2) return [];
 
-      const searchResults = fuse.search(query);
+    const allResults = fuse.search(query);
 
-      // Filtrar resultados con score demasiado alto (peores coincidencias)
-      const filteredResults = searchResults.filter(
-        (result) => (result.score || 0) <= 1
-      );
+    // Filtrar resultados con score demasiado alto (peores coincidencias)
+    const bestResults = allResults.filter((result) => (result.score || 0) <= 1);
 
-      // Log para depuración
-      console.log(`Búsqueda: "${query}"`);
-      console.log(`Total resultados sin filtrar: ${searchResults.length}`);
-      console.log(`Total resultados filtrados: ${filteredResults.length}`);
-      filteredResults.forEach((result, index) => {
-        console.log(`Resultado ${index + 1}:`, {
-          title: result.item.title,
-          score: result.score,
-          matches: result.matches?.map((match) => ({
-            key: match.key,
-            value: match.value,
-            indices: match.indices,
-          })),
-        });
-      });
+    const bestResultsWithSnippets = bestResults.map((post) => {
+      // Encontrar matches del contenido para extraer fragmento relevante
+      const contentMatches =
+        post.matches?.filter((match) => match.key === "content") || [];
+      const content = post.item.content || "";
 
-      return filteredResults.map((r) => {
-        // Encontrar matches del contenido para extraer fragmento relevante
-        const contentMatches =
-          r.matches?.filter((match) => match.key === "content") || [];
-        const content = r.item.content || "";
-
-        let highlightedFragment = "";
-        if (content && contentMatches.length > 0) {
-          // Solo extraer el fragmento, sin aplicar resaltado aún
-          highlightedFragment = getHighlightedFragment(content, contentMatches);
-        } else if (content) {
-          // Si no hay matches en contenido pero sí contenido, mostrar inicio
-          highlightedFragment =
-            content.slice(0, 200) + (content.length > 200 ? "..." : "");
-        }
-
-        return {
-          ...r.item,
-          highlightedFragment,
-        };
-      });
-    }, [query, fuse]);
-
-  const [processedResults, setProcessedResults] = useState<
-    Array<
-      Post & {
-        highlightedFragment?: string;
+      let postSnippet = "";
+      if (content && contentMatches.length > 0) {
+        // Solo extraer el fragmento, sin aplicar resaltado aún
+        postSnippet = getFirstSnippet(content, contentMatches);
+      } else if (content) {
+        // Si no hay matches en contenido pero sí contenido, mostrar inicio
+        postSnippet =
+          content.slice(0, 200) + (content.length > 200 ? "..." : "");
       }
-    >
-  >([]);
+
+      return {
+        ...post.item,
+        snippet: postSnippet,
+      };
+    });
+    return bestResultsWithSnippets;
+  }, [query, fuse]);
 
   // Procesar los fragmentos de markdown a HTML y aplicar resaltado
   useEffect(() => {
     let isMounted = true;
     (async () => {
-      const processed = await Promise.all(
-        results.map(async (post) => {
-          let highlightedFragment = "";
+      const processedResults = await Promise.all(
+        searchResults.map(async (post) => {
+          let highlightedHtmlSnippet = "";
 
-          if (post.highlightedFragment) {
+          if (post.snippet) {
             // Primero procesar el markdown a HTML
-            const processedContent = await remark()
+            const htmlSnippet = await remark()
               .use(remarkParse)
               .use(remarkBreaks)
               .use(remarkRehype)
               .use(rehypeSlug)
               .use(rehypePrism)
               .use(rehypeStringify)
-              .process(post.highlightedFragment);
+              .process(post.snippet);
 
             // Luego aplicar resaltado a las coincidencias en el HTML resultante
-            const htmlContent = processedContent.toString();
-            highlightedFragment = highlightMatches(htmlContent, query);
+            const stringifiedHtmlSnippet = htmlSnippet.toString();
+            highlightedHtmlSnippet = addHighlighting(
+              stringifiedHtmlSnippet,
+              query
+            );
           }
 
           return {
             ...post,
-            highlightedFragment,
+            highlightedSnippet: highlightedHtmlSnippet,
           };
         })
       );
       if (isMounted) {
-        setProcessedResults(processed);
-        if (processed.length > 0) setSelectedPostIndex(0);
+        setProcessedResults(processedResults);
+        if (processedResults.length > 0) setSelectedPostIndex(0);
       }
     })();
     return () => {
       isMounted = false;
     };
-  }, [results, query]);
+  }, [searchResults, query]);
 
   const [selectedPostIndex, setSelectedPostIndex] = useState<number | null>(
     null
@@ -252,8 +238,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
     };
   }, [selectedPostIndex, processedResults]);
 
-  console.log(posts);
-
+  console.log("Processed Results:", processedResults);
   return (
     <div
       style={{
@@ -292,22 +277,24 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
         style={{
           display: "grid",
           /*  gridTemplateRows: "1fr 2fr", */
-          gridTemplateColumns: "1fr 2fr",
+          gridTemplateColumns: "2fr 3fr",
           gap: "1rem",
           height: "100%",
           minHeight: 0,
         }}
       >
-        <PostsList
-          postsList={processedResults}
-          selectedPostIndex={selectedPostIndex}
-          setSelectedPostIndex={setSelectedPostIndex}
-        />
+        {processedResults?.length > 0 && (
+          <PostsList
+            postsList={processedResults}
+            selectedPostIndex={selectedPostIndex}
+            setSelectedPostIndex={setSelectedPostIndex}
+          />
+        )}
 
         {selectedPostIndex !== null && (
           <PostPreview
             postContent={
-              processedResults[selectedPostIndex]?.highlightedFragment
+              processedResults[selectedPostIndex]?.highlightedSnippet
             }
           />
         )}
@@ -321,7 +308,7 @@ function PostsList({
   selectedPostIndex,
   setSelectedPostIndex,
 }: {
-  postsList: Array<Post & { highlightedFragment?: string }>;
+  postsList: Array<Post & { highlightedSnippet?: string }>;
   selectedPostIndex: number | null;
   setSelectedPostIndex: (index: number | null) => void;
 }) {
