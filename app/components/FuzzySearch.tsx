@@ -315,6 +315,15 @@ function PostsList({
   selectedPostIndex: number | null;
   setSelectedPostIndex: (index: number | null) => void;
 }) {
+  // Crear refs para cada elemento
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    if (selectedPostIndex !== null && itemRefs.current[selectedPostIndex]) {
+      itemRefs.current[selectedPostIndex]?.scrollIntoView({ block: "nearest" });
+    }
+  }, [selectedPostIndex]);
+
   return (
     <div
       style={{
@@ -346,6 +355,9 @@ function PostsList({
                 onClick={() => {
                   setSelectedPostIndex(index);
                 }}
+                ref={(el) => {
+                  itemRefs.current[index] = el;
+                }}
               />
             )
           )}
@@ -355,19 +367,21 @@ function PostsList({
   );
 }
 
-function PostListItem({
-  isSelected,
-  title,
-  onClick,
-  id,
-}: {
-  isSelected: boolean;
-  title: string;
-  onClick: () => void;
-  id: string;
-}) {
+// Permitir ref en PostListItem
+import React from "react";
+
+const PostListItem = React.forwardRef<
+  HTMLDivElement,
+  {
+    isSelected: boolean;
+    title: string;
+    onClick: () => void;
+    id: string;
+  }
+>(function PostListItem({ isSelected, title, onClick, id }, ref) {
   return (
     <div
+      ref={ref}
       style={{
         border: `1px solid ${
           isSelected ? "var(--search-selected)" : "transparent"
@@ -405,7 +419,7 @@ function PostListItem({
       )}
     </div>
   );
-}
+});
 
 function PostPreview({ postContent }: { postContent: string | undefined }) {
   if (!postContent) return null;
