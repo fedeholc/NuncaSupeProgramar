@@ -1,7 +1,6 @@
 import logo from "./logo.module.css";
 import Link from "next/link";
- import { metadata } from "../layout";
-export default function Logo() {
+export default function Logo({metadata}: {metadata: {title: string, description: string}}) {
   return (
     <>
       <div className={logo.logo__container}>

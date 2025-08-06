@@ -152,17 +152,17 @@
 /* Tema de Bajo Contraste: Se aplica si el usuario prefiere menos contraste */
 @media (prefers-contrast: less) {
   :root {
-    --background-color: var(--light-th-background-color);
-    --text-color: var(--light-th-text-color);
+    --background-color: var(--lightlow-th-background-color);
+    --text-color: var(--lightlow-th-text-color);
 
-    --border-color: var(--light-th-border-color);
-    --border-color-secondary: var(--light-th-border-color-secondary);
-    --shadow-color: var(--light-th-shadow-color);
-    --search-selected: var(--light-th-search-selected);
+    --border-color: var(--lightlow-th-border-color);
+    --border-color-secondary: var(--lightlow-th-border-color-secondary);
+    --shadow-color: var(--lightlow-th-shadow-color);
+    --search-selected: var(--lightlow-th-search-selected);
 
-    --link-color: var(--light-th-link-color);
-    --linkUnderline: var(--light-th-linkUnderline);
-    --linkUnderlineHover: var(--light-th-linkUnderlineHover);
+    --link-color: var(--lightlow-th-link-color);
+    --linkUnderline: var(--lightlow-th-linkUnderline);
+    --linkUnderlineHover: var(--lightlow-th-linkUnderlineHover);
 
   }
 }

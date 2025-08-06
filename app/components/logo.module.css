@@ -3,8 +3,8 @@
    flex-direction: column;
    align-items: baseline;
    flex-wrap: wrap;
-   border-top: 1px dashed var(--border-color-secondary);
-   border-bottom: 1px dashed var(--border-color-secondary);
+   border-top: 2px dashed var(--border-color-secondary);
+   border-bottom: 2px dashed var(--border-color-secondary);
    padding: 1rem 0rem;
    gap: 0.5rem;
  }

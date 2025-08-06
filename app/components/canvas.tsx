@@ -28,7 +28,7 @@ class Particle {
     ctx.fill();
   }
 }
-import { useThemeToggler } from "../themeToggler";
+import { useThemeToggler } from "./themeToggler";
 
 export function Canvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

@@ -9,7 +9,7 @@ import NavBar from "./components/navbar";
 import "./globals.css";
 import "./prism-line-numbers.css";
 import "./prism-material-dark.css";
-import { ThemeToggler, ThemeProvider } from "./themeToggler";
+import { ThemeProvider } from "./components/themeToggler";
 import { cookies } from "next/headers";
 
 //TODO: poner un toggle para activar animación
@@ -59,24 +59,23 @@ export default async function RootLayout({
       <meta charSet="utf-8" />
 
       <body data-theme={mode} className="background">
-        <ThemeProvider>
-          {/*           <Canvas />
-           */}{" "}
-          <div className="layout__wrapper">
-            <div className="layout__container">
+        {/*           <Canvas />
+         */}{" "}
+        <div className="layout__wrapper">
+          <div className="layout__container">
+            <ThemeProvider>
               <header className="">
-                <ThemeToggler />
-                <NavBar></NavBar>
+                 <NavBar metadata={metadata}></NavBar>
                 <br />
                 <TagList></TagList>
               </header>
-              <main >{children}</main>
-              <footer>Federico Holc ⚡️ 2025</footer>
-            </div>
+              <main>{children}</main>
+            </ThemeProvider>
+            <footer>Federico Holc ⚡️ 2025</footer>
           </div>
-          <Analytics />
-          <SpeedInsights />
-        </ThemeProvider>
+        </div>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
