@@ -152,7 +152,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
         postSnippet =
           content.slice(0, 200) + (content.length > 200 ? "..." : "");
       }
-
+      /* postSnippet = content; */ //para mostrar todo el contenido
       return {
         ...post.item,
         snippet: postSnippet,
@@ -165,7 +165,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
   useEffect(() => {
     let isMounted = true;
     (async () => {
-      const processedResults = await Promise.all(
+      const highlightedResults = await Promise.all(
         searchResults.map(async (post) => {
           let highlightedHtmlSnippet = "";
 
@@ -195,8 +195,8 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
         })
       );
       if (isMounted) {
-        setProcessedResults(processedResults);
-        if (processedResults.length > 0) setSelectedPostIndex(0);
+        setProcessedResults(highlightedResults);
+        if (highlightedResults.length > 0) setSelectedPostIndex(0);
       }
     })();
     return () => {
