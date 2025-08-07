@@ -5,7 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Montserrat, Roboto, Recursive, Open_Sans } from "next/font/google";
 import NavBar from "./components/navbar";
 /* import TagSearch from "./components/tagsearch";
- */ import TagList from "./components/taglist";
+ */ /* import TagList from "./components/taglist"; */
 import "./globals.css";
 import "./prism-line-numbers.css";
 import "./prism-material-dark.css";
@@ -67,7 +67,7 @@ export default async function RootLayout({
               <header className="">
                  <NavBar metadata={metadata}></NavBar>
                 <br />
-                <TagList></TagList>
+               
               </header>
               <main>{children}</main>
             </ThemeProvider>

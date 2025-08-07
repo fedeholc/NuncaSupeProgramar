@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 import Modal from "./Modal";
 import FuzzySearch, { Post } from "./FuzzySearch";
 
- 
-interface HomeClientProps {
+interface SearchClientProps {
   posts: Post[];
 }
 
-const HomeClient: React.FC<HomeClientProps> = ({ posts }) => {
+function SearchClient({ posts }: SearchClientProps) {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [initialQuery, setInitialQuery] = useState("");
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -24,11 +24,46 @@ const HomeClient: React.FC<HomeClientProps> = ({ posts }) => {
 
   return (
     <>
-      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
-        <FuzzySearch posts={posts} isActive={isModalOpen} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalOpen(false);
+          setInitialQuery("");
+        }}
+      >
+        <FuzzySearch
+          posts={posts}
+          isActive={isModalOpen}
+          query={initialQuery}
+          setQuery={setInitialQuery}
+        />
       </Modal>
+      <div style={{ padding: "0rem" }}>
+        <input
+          value={initialQuery}
+          type="text"
+          placeholder="Buscar..."
+          style={{
+            padding: "1rem",
+            width: "100%",
+            border: "2px solid transparent",
+            outline: "2px solid var(--border-color)",
+            borderRadius: "8px",
+            fontSize: "1.2rem",
+          }}
+          onChange={(e) => {
+            setInitialQuery(e.target.value);
+            const query = e.target.value;
+            if (query.trim() === "") {
+              setModalOpen(false);
+            } else {
+              setModalOpen(true);
+            }
+          }}
+        />
+      </div>
     </>
   );
-};
+}
 
-export default HomeClient;
+export default SearchClient;

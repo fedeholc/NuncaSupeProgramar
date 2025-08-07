@@ -29,10 +29,12 @@ export type Post = {
 interface FuzzySearchProps {
   posts: Post[];
   isActive?: boolean;
+  query: string;
+  setQuery: (query: string) => void;
 }
 
-export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
-  const [query, setQuery] = useState("");
+export default function FuzzySearch({ posts, isActive, setQuery, query }: FuzzySearchProps) {
+  /* const [query, setQuery] = useState(initQuery || ""); */
   const [processedResults, setProcessedResults] = useState<
     Array<
       Post & {
@@ -531,3 +533,32 @@ function PostPreview({
     </div>
   );
 }
+
+/* export function SearchBox({
+  query,
+  setQuery,
+  ref
+}: {
+  query: string;
+  setQuery: (query: string) => void;
+  ref: React.Ref<HTMLInputElement>;
+}) {
+  return (
+    <input
+      type="text"
+      ref={ref}
+      placeholder="Buscar apuntes..."
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      style={{
+        padding: "1rem",
+        width: "100%",
+        border: "2px solid transparent",
+        outline: "2px solid var(--border-color)",
+        borderRadius: "8px",
+        fontSize: "1.2rem",
+      }}
+    />
+  );
+}
+ */
