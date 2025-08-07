@@ -11,6 +11,12 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { LuColumns2, LuRows2 } from "react-icons/lu";
 
+// snippetSize = 0 para mostrar todo el contenido
+// snippetSize > 0 para mostrar fragmento de X caracteres
+const snippetSize = 0;
+const snippetSizeBefore = 100; // Caracteres antes de la primera coincidencia
+const snippetSizeAfter = 300; // Caracteres después de la primera coincidencia
+
 export type Post = {
   id: string;
   date: string;
@@ -61,7 +67,9 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
     matches: Array<{ indices?: readonly [number, number][] }>
   ) {
     if (!matches || matches.length === 0) {
-      return text.slice(0, 200) + (text.length > 200 ? "..." : "");
+      return (
+        text.slice(0, snippetSize) + (text.length > snippetSize ? "..." : "")
+      );
     }
 
     // Encontrar todas las posiciones de coincidencias
@@ -77,15 +85,17 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
     });
 
     if (allIndices.length === 0) {
-      return text.slice(0, 200) + (text.length > 200 ? "..." : "");
+      return (
+        text.slice(0, snippetSize) + (text.length > snippetSize ? "..." : "")
+      );
     }
 
     // Encontrar el primer índice de coincidencia
     const firstMatch = Math.min(...allIndices);
 
     // Definir el inicio del fragmento (100 caracteres antes de la primera coincidencia)
-    const fragmentStart = Math.max(0, firstMatch - 100);
-    const fragmentEnd = Math.min(text.length, fragmentStart + 300);
+    const fragmentStart = Math.max(0, firstMatch - snippetSizeBefore);
+    const fragmentEnd = Math.min(text.length, fragmentStart + snippetSizeAfter);
 
     let fragment = text.slice(fragmentStart, fragmentEnd);
 
@@ -96,15 +106,64 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
     return fragment;
   }
 
-  // Función para resaltar las coincidencias en un texto
-  function addHighlighting(text: string, searchQuery: string) {
-    if (!searchQuery.trim()) return text;
+  // Función para resaltar las coincidencias en un texto HTML de forma segura
+  function addHighlighting(html: string, searchQuery: string) {
+    if (!searchQuery.trim()) return html;
 
+    // Método alternativo sin cheerio: usar DOMParser del navegador
+    if (typeof window !== "undefined") {
+      try {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(`<div>${html}</div>`, "text/html");
+        const container = doc.body.firstChild as HTMLElement;
+
+        const words = searchQuery
+          .trim()
+          .split(" ")
+          .filter((word) => word.length > 0);
+        const regex = new RegExp(`(${words.join("|")})`, "gi");
+
+        // Función recursiva para resaltar solo en nodos de texto
+        function highlightTextNodes(node: Node) {
+          if (node.nodeType === Node.TEXT_NODE) {
+            const textContent = node.textContent || "";
+            if (regex.test(textContent)) {
+              const highlightedText = textContent.replace(
+                regex,
+                '<mark style="background-color: #ffeb3b; padding: 0 2px;">$1</mark>'
+              );
+              const tempDiv = document.createElement("div");
+              tempDiv.innerHTML = highlightedText;
+
+              // Reemplazar el nodo de texto con los nuevos nodos
+              const parent = node.parentNode;
+              if (parent) {
+                while (tempDiv.firstChild) {
+                  parent.insertBefore(tempDiv.firstChild, node);
+                }
+                parent.removeChild(node);
+              }
+            }
+          } else if (node.nodeType === Node.ELEMENT_NODE) {
+            // Procesar hijos (creamos una copia del array porque puede cambiar)
+            const children = Array.from(node.childNodes);
+            children.forEach((child) => highlightTextNodes(child));
+          }
+        }
+
+        highlightTextNodes(container);
+        return container.innerHTML;
+      } catch (error) {
+        console.error("Error al procesar HTML con DOMParser:", error);
+      }
+    }
+
+    // Fallback: método simple pero menos seguro
     const regex = new RegExp(
       `(${searchQuery.trim().split(" ").join("|")})`,
       "gi"
     );
-    return text.replace(
+    return html.replace(
       regex,
       '<mark style="background-color: #ffeb3b; padding: 0 2px;">$1</mark>'
     );
@@ -138,21 +197,29 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
     const bestResults = allResults.filter((result) => (result.score || 0) <= 1);
 
     const bestResultsWithSnippets = bestResults.map((post) => {
+      let postSnippet = "";
+      const content = post.item.content || "";
+
+      // para mostrar fragmento
       // Encontrar matches del contenido para extraer fragmento relevante
       const contentMatches =
         post.matches?.filter((match) => match.key === "content") || [];
-      const content = post.item.content || "";
 
-      let postSnippet = "";
-      if (content && contentMatches.length > 0) {
-        // Solo extraer el fragmento, sin aplicar resaltado aún
-        postSnippet = getFirstSnippet(content, contentMatches);
-      } else if (content) {
-        // Si no hay matches en contenido pero sí contenido, mostrar inicio
-        postSnippet =
-          content.slice(0, 200) + (content.length > 200 ? "..." : "");
+      if (snippetSize > 0) {
+        if (content && contentMatches.length > 0) {
+          // Solo extraer el fragmento, sin aplicar resaltado aún
+          postSnippet = getFirstSnippet(content, contentMatches);
+        } else if (content) {
+          // Si no hay matches en contenido pero sí contenido, mostrar inicio
+          postSnippet =
+            content.slice(0, snippetSize) +
+            (content.length > snippetSize ? "..." : "");
+        }
+      } else {
+        // para mostrar todo el contenido
+        postSnippet = content;
       }
-      /* postSnippet = content; */ //para mostrar todo el contenido
+
       return {
         ...post.item,
         snippet: postSnippet,
