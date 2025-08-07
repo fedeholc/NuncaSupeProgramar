@@ -316,7 +316,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
     >
       <div
         style={{
-          padding: "1rem",
+          padding: "1rem 0rem",
           display: "flex",
           alignItems: "center",
           gap: "1rem",
@@ -363,6 +363,7 @@ export default function FuzzySearch({ posts, isActive }: FuzzySearchProps) {
             postContent={
               processedResults[selectedPostIndex]?.highlightedSnippet
             }
+            postTitle={processedResults[selectedPostIndex]?.title}
           />
         )}
       </div>
@@ -485,7 +486,13 @@ const PostListItem = React.forwardRef<
   );
 });
 
-function PostPreview({ postContent }: { postContent: string | undefined }) {
+function PostPreview({
+  postContent,
+  postTitle,
+}: {
+  postContent: string | undefined;
+  postTitle: string | undefined;
+}) {
   if (!postContent) return null;
   return (
     <div
@@ -503,6 +510,18 @@ function PostPreview({ postContent }: { postContent: string | undefined }) {
         flexDirection: "column",
       }}
     >
+      <div
+        style={{
+          fontWeight: "bold",
+          backgroundColor: "var(--border-color-secondary)",
+          color: "var(--background-color)",
+          padding: "0.5rem",
+          borderRadius: "4px",
+          fontSize: "1.2rem",
+        }}
+      >
+        {postTitle}
+      </div>
       <div
         style={{ height: "100%", minHeight: 0, overflow: "auto" }}
         dangerouslySetInnerHTML={{
