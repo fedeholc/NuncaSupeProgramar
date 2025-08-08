@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Date from "./components/date";
 import { getAllPostsContentForFuzzy, getSortedPostsData } from "./lib/posts";
-import SearchClient from "./components/HomeClient";
+import SearchClient from "./components/FuzzySearch/SearchClient";
 import TagList from "./components/taglist";
 
 export default async function Home() {
@@ -18,7 +18,6 @@ export default async function Home() {
         <TagList></TagList>
       </div>
       <section className="layout__main">
-        
         <h2 className="apuntes__titulo">Apuntes destacados:</h2>
         <ul>
           {allPostsData
