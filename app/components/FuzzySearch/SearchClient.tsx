@@ -48,7 +48,8 @@ function SearchClient({ posts }: SearchClientProps) {
             width: "100%",
              border: "2px solid transparent",  
               outline: "2px solid var(--border-color)", 
-            
+              caretColor: "var(--border-color)", // Cambia el color del cursor
+             
              boxShadow: "0px 0px 11px 3px var(--shadow-color)",
  
              borderRadius: "10vh",
