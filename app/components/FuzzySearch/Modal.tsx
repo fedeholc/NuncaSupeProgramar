@@ -45,6 +45,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
           height: "100%",
           width: "100%",
           boxShadow: "0 0 20px var(--shadow-color, #000)",
+          display: "flex",
+          justifyContent: "center",
         }}
         onClick={(e) => e.stopPropagation()}
       >

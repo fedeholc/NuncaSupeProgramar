@@ -38,7 +38,7 @@ function SearchClient({ posts }: SearchClientProps) {
           setQuery={setInitialQuery}
         />
       </Modal>
-      <div style={{ padding: "0rem" }}>
+      <div style={{ padding: "0rem", width: "100%" }}>
         <input
           value={initialQuery}
           type="text"

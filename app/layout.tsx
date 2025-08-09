@@ -65,9 +65,8 @@ export default async function RootLayout({
           <div className="layout__container">
             <ThemeProvider>
               <header className="">
-                 <NavBar metadata={metadata}></NavBar>
+                <NavBar metadata={metadata}></NavBar>
                 <br />
-               
               </header>
               <main>{children}</main>
             </ThemeProvider>

@@ -9,8 +9,8 @@ import { remark } from "remark";
 import remarkBreaks from "remark-breaks";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import { LuColumns2, LuRows2 } from "react-icons/lu";
-
+/* import { LuColumns2, LuRows2 } from "react-icons/lu";
+ */
 // snippetSize = 0 para mostrar todo el contenido
 // snippetSize > 0 para mostrar fragmento de X caracteres
 const snippetSize = 0;
@@ -314,13 +314,16 @@ export default function FuzzySearch({ posts, isActive, setQuery, query }: FuzzyS
         display: "grid",
         gridTemplateRows: "max-content 1fr",
         height: "100%",
+        maxWidth: "var(--global-max-width)",
+        width: "100%",
       }}
     >
       <div
         style={{
-          padding: "1rem 0rem",
+          padding: "1rem 0rem 2rem 0rem",
           display: "flex",
           alignItems: "center",
+          justifyContent: "center",
           gap: "1rem",
         }}
       >
@@ -331,23 +334,28 @@ export default function FuzzySearch({ posts, isActive, setQuery, query }: FuzzyS
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           style={{
+            maxWidth: "800px",
             padding: "1rem",
             width: "100%",
             border: "2px solid transparent",
             outline: "2px solid var(--border-color)",
-            borderRadius: "8px",
+            caretColor: "var(--border-color)", // Cambia el color del cursor
+
+            boxShadow: "0px 0px 11px 3px var(--shadow-color)",
+
+            borderRadius: "10vh",
             fontSize: "1.2rem",
           }}
         />
-        <LuColumns2 size={30}></LuColumns2>
-        <LuRows2 size={30}></LuRows2>
+        {/*    <LuColumns2 size={30}></LuColumns2>
+        <LuRows2 size={30}></LuRows2> */}
       </div>
       <div
         style={{
           display: "grid",
           /*  gridTemplateRows: "1fr 2fr", */
           gridTemplateColumns: "2fr 3fr",
-          gap: "1rem",
+          gap: "2rem",
           height: "100%",
           minHeight: 0,
         }}
