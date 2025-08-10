@@ -64,11 +64,21 @@ export default async function RootLayout({
         <div className="layout__wrapper">
           <div className="layout__container">
             <ThemeProvider>
-              <header className="">
+              <header style={{ display: "flex", width: "100%" }}>
                 <NavBar metadata={metadata}></NavBar>
                 <br />
               </header>
-              <main>{children}</main>
+              <main
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                {children}
+              </main>
             </ThemeProvider>
             <footer>Federico Holc ⚡️ 2025</footer>
           </div>

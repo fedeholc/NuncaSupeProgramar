@@ -28,30 +28,32 @@ export default async function Post({
   });
   tags = tags.slice(0, tags.length - 2); // le quita la coma y el espacio a la última */
   return (
-    <section className="post__container">
-      <div className="post__fecha">
-        <Date dateString={postData.date} />
-      </div>
-      <h1 className="post__titulo">{postData.title}</h1>
-      <div
-        className="post__content"
-        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-      />
-      {/*       TODO: falta css para las tags links
-       */}{" "}
-      <div className="post__tags">
-        Tags:&nbsp;
-        {tags &&
-          postData.tags.map((tag: string) => {
-            return (
-              <div key={tag}>
-                <Link href={`/tags/${tag.toLowerCase()}`}>{tag}</Link>
-                <span></span>
-                &nbsp;
-              </div>
-            );
-          })}
-      </div>
-    </section>
+    <div style={{ display: "flex", justifyContent: "center", padding: "2rem 0" }}>
+      <section className="post__container">
+        <div className="post__fecha">
+          <Date dateString={postData.date} />
+        </div>
+        <h1 className="post__titulo">{postData.title}</h1>
+        <div
+          className="post__content"
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+        />
+        {/*       TODO: falta css para las tags links
+         */}{" "}
+        <div className="post__tags">
+          Tags:&nbsp;
+          {tags &&
+            postData.tags.map((tag: string) => {
+              return (
+                <div key={tag}>
+                  <Link href={`/tags/${tag.toLowerCase()}`}>{tag}</Link>
+                  <span></span>
+                  &nbsp;
+                </div>
+              );
+            })}
+        </div>
+      </section>
+    </div>
   );
 }

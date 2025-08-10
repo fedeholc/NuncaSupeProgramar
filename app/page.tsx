@@ -9,12 +9,12 @@ export default async function Home() {
   const allPostContent = await getAllPostsContentForFuzzy();
 
   return (
-    <div style={{ padding: "0.5rem" }}>
+    <div style={{ padding: "0 " }}>
       <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
         <div
           style={{
             maxWidth: "800px",
-            padding: "0 0 2rem 0rem",
+            padding: "2rem",
             display: "flex",
             width: "100%",
             justifyContent: "center",
@@ -69,7 +69,7 @@ export default async function Home() {
               ))}
           </ul>
         </section>
-        <div style={{ padding: "1rem 0", gridColumn: "1 / span 2" }}>
+        <div style={{ padding: "0rem 0", gridColumn: "1 / span 2" }}>
           <TagList></TagList>
         </div>
       </div>

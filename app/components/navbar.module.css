@@ -3,11 +3,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    column-gap: 3rem;
+    gap: 0.5rem;
+    width: 100%;
   }
 
   .navbar__logo {
-    padding: 0.3rem 0.5rem 0.5rem 0.5rem;
+ 
     margin: 0rem;
     background-color: var(--background-color);
     width: 100%;
@@ -18,9 +19,8 @@
     display: flex;
     flex-direction: row;
     justify-content: right;
-    padding-top: 0.5rem;
-    padding-bottom: 0.2rem;
-    padding-right: 0.5rem;
+     
+   /*   padding-right: 0.5rem; */
     column-gap: 0.5rem;
     font-size: 0.8rem;
     font-family: "Roboto mono", monospace;
