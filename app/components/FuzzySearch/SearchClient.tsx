@@ -46,16 +46,17 @@ function SearchClient({ posts }: SearchClientProps) {
           style={{
             padding: "1rem",
             width: "100%",
-             border: "2px solid transparent",  
-              outline: "2px solid var(--border-color)", 
-              caretColor: "var(--border-color)", // Cambia el color del cursor
-             
-             boxShadow: "0px 0px 11px 3px var(--shadow-color)",
- 
-             borderRadius: "10vh",
+            border: "2px solid transparent",
+            outline: "2px solid var(--border-color)",
+            caretColor: "var(--border-color)", // Cambia el color del cursor
+
+            boxShadow: "0px 0px 11px 3px var(--shadow-color)",
+
+            borderRadius: "10vh",
             fontSize: "1.2rem",
-/*             backgroundColor: "var(--search-selected)",
- */          }}
+            /*             backgroundColor: "var(--search-selected)",
+             */
+          }}
           onChange={(e) => {
             setInitialQuery(e.target.value);
             const query = e.target.value;

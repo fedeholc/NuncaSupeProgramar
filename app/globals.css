@@ -62,13 +62,22 @@
   --lightlow-th-linkUnderlineHover: var(--lightlow-th-secondary-color);
 
   /* Dark theme */
-  --dark-th-background-color: #1a1a1a;
+/*   --dark-th-background-color: #1a1a1a;
   --dark-th-text-color: #e0e0e0;
   --dark-th-main-color: rgba(0, 255, 0, 1);
   --dark-th-main-color-50: rgba(0, 255, 0, 0.5);
   --dark-th-main-color-25: rgba(0, 255, 0, 0.25);
   --dark-th-secondary-color: rgba(255, 174, 0, 1);
+  --dark-th-search-selected: #2c2c2c; */
+
+  --dark-th-background-color: rgb(19, 19, 36);
+  --dark-th-text-color: #e0e0e0;
+  --dark-th-main-color: rgba(255, 140, 215, 0.75);
+  --dark-th-main-color-50: rgba(255, 140, 215, 0.5);
+  --dark-th-main-color-25: rgba(255, 140, 215, 0.25);
+  --dark-th-secondary-color: rgba(88, 196, 255, 0.75);
   --dark-th-search-selected: #2c2c2c;
+
 
   --dark-th-border-color: var(--dark-th-main-color);
   --dark-th-border-color-secondary: var(--dark-th-secondary-color);
@@ -443,8 +452,8 @@ a:hover {
   padding: 1rem 1rem;
   max-width: var(--global-max-width);
   background-color: var(--background-color);
-/*   box-shadow: 0px 0px 11px 3px var(--shadow-color);
- */  
+  /*   box-shadow: 0px 0px 11px 3px var(--shadow-color);
+ */
   border: 2px solid var(--border-color);
   border-radius: 8px;
   color: inherit;
@@ -486,8 +495,10 @@ footer {
   font-weight: 400;
   overflow-wrap: anywhere;
   max-width: 1100px;
-  border: 2px solid var(--border-color); /* TODO: mediaqueries, en mobile no */
-  padding: 0.5rem 2rem 1rem 2rem; /* TODO: mediaqueries, en mobile no */
+  border: 2px solid var(--border-color);
+  /* TODO: mediaqueries, en mobile no */
+  padding: 1rem 2rem 1.5rem 2rem;
+  /* TODO: mediaqueries, en mobile no */
   border-radius: 8px;
 }
 
@@ -563,7 +574,7 @@ footer {
   display: flex;
   justify-content: right;
   font-size: 0.9rem;
- 
+
 }
 
 .apuntes__titulo {
