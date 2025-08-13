@@ -11,7 +11,7 @@
  }
 
  .logo__titulo {
-   font-family: var(--font-recursive), monospace;
+   font-family: var(--font-text), monospace;
    text-box-edge: cap alphabetic;
    text-box-trim: trim-both;
    font-size: 1.5rem;
@@ -28,7 +28,7 @@
 
  .logo__descripcion {
    margin-top: 0.2rem;
-   font-family: var(--font-recursive), monospace;
+   font-family: var(--font-text), monospace;
    font-weight: 400;
    line-height: 1.2rem;
    font-size: 1rem;

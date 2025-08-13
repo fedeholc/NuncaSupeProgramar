@@ -2,7 +2,8 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import { Montserrat, Roboto, Recursive, Open_Sans } from "next/font/google";
+import { Montserrat, Roboto, Recursive, Open_Sans, JetBrains_Mono } from "next/font/google";
+ 
 import NavBar from "./components/navbar";
 /* import TagSearch from "./components/tagsearch";
  */ /* import TagList from "./components/taglist"; */
@@ -37,6 +38,12 @@ const recursive = Recursive({
   variable: "--font-recursive",
 });
 
+const jetBrainsMono = JetBrains_Mono({
+  weight: ["300","400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
+
 export const metadata = {
   title: ">> err0r << v0.2",
   description: "Blog de apuntes para aprender a programar",
@@ -54,7 +61,7 @@ export default async function RootLayout({
     <html
       data-theme={mode}
       lang="es"
-      className={`${montserrat.variable} ${open.variable} ${roboto.variable} ${recursive.variable}`}
+      className={`${montserrat.variable} ${open.variable} ${roboto.variable} ${recursive.variable} ${jetBrainsMono.variable}`}
     >
       <meta charSet="utf-8" />
 
