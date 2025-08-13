@@ -15,6 +15,8 @@
   --lila: #A992FA;
   --azul: #00207F;
 
+
+
   --linkNuevo: hsl(225, 80%, 45%);
   --linkVisitado: hsl(225, 100%, 35%);
   --linkUnderline: #00a2d39c;
@@ -62,7 +64,7 @@
   --lightlow-th-linkUnderlineHover: var(--lightlow-th-secondary-color);
 
   /* Dark theme */
-/*   --dark-th-background-color: #1a1a1a;
+  /*   --dark-th-background-color: #1a1a1a;
   --dark-th-text-color: #e0e0e0;
   --dark-th-main-color: rgba(0, 255, 0, 1);
   --dark-th-main-color-50: rgba(0, 255, 0, 0.5);
@@ -71,12 +73,16 @@
   --dark-th-search-selected: #2c2c2c; */
 
   --dark-th-background-color: rgb(19, 19, 36);
+  --dark-th-background-color: rgb(5, 0, 40);
   --dark-th-text-color: #e0e0e0;
   --dark-th-main-color: rgba(255, 140, 215, 0.75);
+  --dark-th-main-color: rgb(231, 129, 175);
   --dark-th-main-color-50: rgba(255, 140, 215, 0.5);
   --dark-th-main-color-25: rgba(255, 140, 215, 0.25);
   --dark-th-secondary-color: rgba(88, 196, 255, 0.75);
+  --dark-th-secondary-color: rgb(0, 255, 210);
   --dark-th-search-selected: #2c2c2c;
+
 
 
   --dark-th-border-color: var(--dark-th-main-color);
