@@ -42,6 +42,8 @@
   --light-th-secondary-color: rgba(88, 196, 255, 1);
   --light-th-search-selected: #cacaca;
 
+  --light-th-code-text-background: rgb(255, 207, 253);
+
   --light-th-border-color: var(--light-th-main-color);
   --light-th-border-color-secondary: var(--light-th-secondary-color);
   --light-th-shadow-color: var(--light-th-main-color-10);
@@ -60,6 +62,7 @@
   --lightlow-th-secondary-color: rgba(88, 196, 255, 0.75);
   --lightlow-th-search-selected: #d8d8d8;
 
+  --lightlow-th-code-text-background: rgb(255, 220, 254);
 
   --lightlow-th-border-color: var(--lightlow-th-main-color);
   --lightlow-th-border-color-secondary: var(--lightlow-th-secondary-color);
@@ -76,11 +79,11 @@
   --dark-th-text-color: #e0e0e0;
   --dark-th-main-color: rgb(231, 129, 175);
   --dark-th-main-color-50: rgba(255, 140, 215, 0.5);
-  --dark-th-main-color-25: rgba(255, 140, 215, 0.25);
+  --dark-th-main-color-25: rgba(255, 140, 140, 0.25);
   --dark-th-secondary-color: rgb(0, 255, 210);
   --dark-th-search-selected: #2c2c2c;
 
-
+  --dark-th-code-text-background: rgb(82, 0, 99);
 
   --dark-th-border-color: var(--dark-th-main-color);
   --dark-th-border-color-secondary: var(--dark-th-secondary-color);
@@ -98,6 +101,8 @@
   --darkhigh-th-main-color-25: rgba(255, 140, 215, 0.25);
   --darkhigh-th-secondary-color: rgb(0, 255, 210);
   --darkhigh-th-search-selected: #2c2c2c;
+
+  --darkhigh-th-code-text-background: rgb(114, 0, 129);
 
   --darkhigh-th-border-color: var(--darkhigh-th-main-color);
   --darkhigh-th-border-color-secondary: var(--darkhigh-th-secondary-color);
@@ -121,6 +126,8 @@
   --shadow-color: var(--light-th-shadow-color);
   --search-selected: var(--light-th-search-selected);
 
+  --code-text-background: var(--light-th-code-text-background);
+
   --link-color: var(--light-th-link-color);
   --linkUnderline: var(--light-th-linkUnderline);
   --linkUnderlineHover: var(--light-th-linkUnderlineHover);
@@ -136,6 +143,8 @@
     --border-color-secondary: var(--light-th-border-color-secondary);
     --shadow-color: var(--light-th-shadow-color);
     --search-selected: var(--light-th-search-selected);
+
+    --code-text-background: var(--light-th-code-text-background);
 
     --link-color: var(--light-th-link-color);
     --linkUnderline: var(--light-th-linkUnderline);
@@ -153,6 +162,8 @@
     --border-color-secondary: var(--dark-th-secondary-color);
     --shadow-color: var(--dark-th-shadow-color);
     --search-selected: var(--dark-th-search-selected);
+
+    --code-text-background: var(--dark-th-code-text-background);
 
     --link-color: var(--dark-th-link-color);
     --linkUnderline: var(--dark-th-linkUnderline);
@@ -172,6 +183,8 @@
     --shadow-color: var(--lightlow-th-shadow-color);
     --search-selected: var(--lightlow-th-search-selected);
 
+    --code-text-background: var(--lightlow-th-code-text-background);
+
     --link-color: var(--lightlow-th-link-color);
     --linkUnderline: var(--lightlow-th-linkUnderline);
     --linkUnderlineHover: var(--lightlow-th-linkUnderlineHover);
@@ -189,6 +202,8 @@
     --border-color-secondary: var(--darkhigh-th-border-color-secondary);
     --shadow-color: var(--darkhigh-th-shadow-color);
     --search-selected: var(--darkhigh-th-search-selected);
+
+    --code-text-background: var(--darkhigh-th-code-text-background);
 
     --link-color: var(--darkhigh-th-link-color);
     --linkUnderline: var(--darkhigh-th-linkUnderline);
@@ -209,6 +224,8 @@ html[data-theme="light"],
   --border-color-secondary: var(--light-th-border-color-secondary);
   --search-selected: var(--light-th-search-selected);
 
+  --code-text-background: var(--light-th-code-text-background);
+
   --link-color: var(--light-th-link-color);
   --linkUnderline: var(--light-th-linkUnderline);
   --linkUnderlineHover: var(--light-th-linkUnderlineHover);
@@ -226,6 +243,8 @@ html[data-theme="dark"],
   --shadow-color: var(--dark-th-shadow-color);
   --search-selected: var(--dark-th-search-selected);
 
+  --code-text-background: var(--dark-th-code-text-background);
+
   --linkUnderline: var(--dark-th-linkUnderline);
   --linkUnderlineHover: var(--dark-th-linkUnderlineHover);
 }
@@ -239,6 +258,8 @@ html[data-theme="low-contrast"],
   --border-color-secondary: var(--lightlow-th-border-color-secondary);
   --shadow-color: var(--lightlow-th-shadow-color);
   --search-selected: var(--lightlow-th-search-selected);
+
+  --code-text-background: var(--lightlow-th-code-text-background);
 
   --link-color: var(--lightlow-th-link-color);
   --linkUnderline: var(--lightlow-th-linkUnderline);
@@ -254,6 +275,8 @@ html[data-theme="high-contrast"],
   --border-color-secondary: var(--darkhigh-th-border-color-secondary);
   --shadow-color: var(--darkhigh-th-shadow-color);
   --search-selected: var(--darkhigh-th-search-selected);
+
+  --code-text-background: var(--darkhigh-th-code-text-background);
 
   --link-color: var(--darkhigh-th-link-color);
   --linkUnderline: var(--darkhigh-th-linkUnderline);
@@ -337,8 +360,7 @@ input {
 }
 
 code {
-  color: rgb(0, 0, 0);
-  background-color: rgba(255, 62, 213, 0.1);
+  background-color: var(--code-text-background);
   padding: 0.2rem 0.3rem;
   border-radius: 8px;
 }
@@ -380,7 +402,7 @@ h2 {
 
 .tag_list__item {
   padding: 0.2rem 0rem;
-  
+
 }
 
 .tag_list__count {
@@ -453,7 +475,29 @@ a:hover {
   text-decoration-color: var(--linkUnderlineHover);
 }
 
-.layout__main {
+.layout__main-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-column: 1;
+  }
+}
+
+
+.layout__tags {
+  grid-column: 1 / span 2;
+
+  @media screen and (max-width: 768px) {
+    grid-column: 1;
+  }
+}
+
+
+.layout__section {
   padding: 1rem 1rem;
   max-width: var(--global-max-width);
   background-color: var(--background-color);
@@ -500,11 +544,14 @@ footer {
   font-weight: 400;
   overflow-wrap: anywhere;
   max-width: 1100px;
-  border: 2px solid var(--border-color);
-  /* TODO: mediaqueries, en mobile no */
   padding: 1rem 2rem 1.5rem 2rem;
-  /* TODO: mediaqueries, en mobile no */
-  border-radius: 8px;
+
+  @media screen {
+    @media (max-width: 1200px) {
+      border: none;
+    }
+
+  }
 }
 
 .post__container li {
@@ -519,7 +566,8 @@ footer {
   font-size: 1.6rem;
   margin-top: 2.2rem;
   margin-bottom: 0.5rem;
-  line-height: 1rem;
+  line-height: 2.2rem;
+
 }
 
 .post__container h3 {

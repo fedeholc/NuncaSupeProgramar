@@ -9,6 +9,7 @@ import { remark } from "remark";
 import remarkBreaks from "remark-breaks";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
+import CSS from "./FuzzySearch.module.css";
 /* import { LuColumns2, LuRows2 } from "react-icons/lu";
  */
 // snippetSize = 0 para mostrar todo el contenido
@@ -307,7 +308,6 @@ export default function FuzzySearch({ posts, isActive, setQuery, query }: FuzzyS
     };
   }, [selectedPostIndex, processedResults]);
 
-  console.log("Processed Results:", processedResults);
   return (
     <div
       style={{
@@ -351,14 +351,7 @@ export default function FuzzySearch({ posts, isActive, setQuery, query }: FuzzyS
         <LuRows2 size={30}></LuRows2> */}
       </div>
       <div
-        style={{
-          display: "grid",
-          /*  gridTemplateRows: "1fr 2fr", */
-          gridTemplateColumns: "2fr 3fr",
-          gap: "2rem",
-          height: "100%",
-          minHeight: 0,
-        }}
+        className={CSS.resultsGrid}
       >
         {processedResults?.length > 0 && (
           <PostsList
@@ -401,16 +394,8 @@ function PostsList({
 
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "0.5rem",
-        outline: "2px solid var(--border-color)",
-        borderRadius: "8px",
-        padding: "1rem 0.5rem 1rem 1rem",
-        height: "100%",
-        minHeight: 0,
-      }}
+    
+      className={CSS.postListLayout}
     >
       <div style={{ overflowY: "auto" }}>
         <div
@@ -469,6 +454,7 @@ const PostListItem = React.forwardRef<
         cursor: "pointer",
       }}
       onClick={onClick}
+      
     >
       {isSelected && (
         <Link href={`/posts/${id}`}>

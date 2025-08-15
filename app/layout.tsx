@@ -93,25 +93,39 @@ export default async function RootLayout({
                 {children}
               </main>
             </ThemeProvider>
-            <footer
+            <div
               style={{
                 display: "flex",
-                flexDirection: "row",
+                justifyContent: "center",
                 alignItems: "center",
-                gap: "1rem",
+                padding: "3rem 0rem 0rem 0rem",
               }}
             >
-              Federico Holc{" "}
-              <span
+              <footer
                 style={{
-                  color: "#ff00ff",
-                  fontSize: "1.2rem",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "1rem",
+                  width: "fit-content",
+                  padding: "0.1rem 2rem",
+                  borderRadius: "0.5rem",
+                  border: "1px dashed var(--border-color-secondary)",
                 }}
               >
-                ⚡
-              </span>{" "}
-              2025
-            </footer>
+                Federico Holc{" "}
+                <span
+                  style={{
+                    color: "#ff00ff",
+                    fontSize: "1.2rem",
+                  }}
+                >
+                  ⚡
+                </span>{" "}
+                2025
+              </footer>
+            </div>
           </div>
         </div>
         <Analytics />

@@ -26,15 +26,8 @@ export default async function Home() {
         </div>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gap: "2rem",
-          gridTemplateColumns: "1fr 1fr",
-          gridTemplateRows: "auto auto",
-        }}
-      >
-        <section className="layout__main">
+      <div className="layout__main-grid">
+        <section className="layout__section">
           <div className="scrollable">
             <h2 className="apuntes__titulo">Últimos apuntes:</h2>
             <ul>
@@ -52,7 +45,7 @@ export default async function Home() {
             </ul>
           </div>
         </section>
-        <section className="layout__main">
+        <section className="layout__section">
           <h2 className="apuntes__titulo">Apuntes destacados:</h2>
           <ul>
             {allPostsData
@@ -69,7 +62,7 @@ export default async function Home() {
               ))}
           </ul>
         </section>
-        <div style={{ padding: "0rem 0", gridColumn: "1 / span 2" }}>
+        <div className="layout__tags" >
           <TagList></TagList>
         </div>
       </div>
