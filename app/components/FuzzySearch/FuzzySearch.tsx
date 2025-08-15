@@ -34,7 +34,12 @@ interface FuzzySearchProps {
   setQuery: (query: string) => void;
 }
 
-export default function FuzzySearch({ posts, isActive, setQuery, query }: FuzzySearchProps) {
+export default function FuzzySearch({
+  posts,
+  isActive,
+  setQuery,
+  query,
+}: FuzzySearchProps) {
   /* const [query, setQuery] = useState(initQuery || ""); */
   const [processedResults, setProcessedResults] = useState<
     Array<
@@ -56,6 +61,10 @@ export default function FuzzySearch({ posts, isActive, setQuery, query }: FuzzyS
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+      if (e.key.at(0) === "/") {
         e.preventDefault();
         inputRef.current?.focus();
       }
@@ -350,9 +359,7 @@ export default function FuzzySearch({ posts, isActive, setQuery, query }: FuzzyS
         {/*    <LuColumns2 size={30}></LuColumns2>
         <LuRows2 size={30}></LuRows2> */}
       </div>
-      <div
-        className={CSS.resultsGrid}
-      >
+      <div className={CSS.resultsGrid}>
         {processedResults?.length > 0 && (
           <PostsList
             postsList={processedResults}
@@ -393,10 +400,7 @@ function PostsList({
   }, [selectedPostIndex]);
 
   return (
-    <div
-    
-      className={CSS.postListLayout}
-    >
+    <div className={CSS.postListLayout}>
       <div style={{ overflowY: "auto" }}>
         <div
           style={{
@@ -454,7 +458,6 @@ const PostListItem = React.forwardRef<
         cursor: "pointer",
       }}
       onClick={onClick}
-      
     >
       {isSelected && (
         <Link href={`/posts/${id}`}>
