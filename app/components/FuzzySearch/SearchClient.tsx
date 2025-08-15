@@ -17,10 +17,14 @@ function SearchClient({ posts }: SearchClientProps) {
         e.preventDefault();
         setModalOpen(true);
       }
+      if (e.key.at(0) === "/" && !isModalOpen) {
+        e.preventDefault();
+        setModalOpen(true);
+      }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [isModalOpen]);
 
   return (
     <>
