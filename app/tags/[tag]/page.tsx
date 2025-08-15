@@ -14,7 +14,7 @@ export default async function Tags({
   const { tag } = await params;
 
   return (
-    <section>
+    <section style={{padding: "2rem 0rem"}}>
       <h2 className="apuntes__titulo">Apuntes con tag {decodeURI(tag)}:</h2>
       <ul>
         {allPostsData

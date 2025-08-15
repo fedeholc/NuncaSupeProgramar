@@ -2,8 +2,14 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import { Montserrat, Roboto, Recursive, Open_Sans, JetBrains_Mono } from "next/font/google";
- 
+import {
+  Montserrat,
+  Roboto,
+  Recursive,
+  Open_Sans,
+  JetBrains_Mono,
+} from "next/font/google";
+
 import NavBar from "./components/navbar";
 /* import TagSearch from "./components/tagsearch";
  */ /* import TagList from "./components/taglist"; */
@@ -39,7 +45,7 @@ const recursive = Recursive({
 });
 
 const jetBrainsMono = JetBrains_Mono({
-  weight: ["300","400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
 });
@@ -79,7 +85,7 @@ export default async function RootLayout({
                 style={{
                   display: "flex",
                   width: "100%",
-                  justifyContent: "center",
+                  justifyContent: "flex-start",
                   flexDirection: "column",
                   alignItems: "center",
                 }}
@@ -87,7 +93,25 @@ export default async function RootLayout({
                 {children}
               </main>
             </ThemeProvider>
-            <footer>Federico Holc ⚡️ 2025</footer>
+            <footer
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "1rem",
+              }}
+            >
+              Federico Holc{" "}
+              <span
+                style={{
+                  color: "#ff00ff",
+                  fontSize: "1.2rem",
+                }}
+              >
+                ⚡
+              </span>{" "}
+              2025
+            </footer>
           </div>
         </div>
         <Analytics />

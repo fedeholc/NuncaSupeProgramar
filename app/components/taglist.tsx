@@ -60,7 +60,9 @@ export default async function TagList() {
           {allTagsToShow.map((tagCount) => {
             return (
               <div className="tag_list__item" key={tagCount.tag}>
-                <Link href={`/tags/${tagCount.tag}`}>{`${tagCount.tag}`}</Link>
+                <span>
+                  <Link href={`/tags/${tagCount.tag}`}>{`${tagCount.tag}`}</Link>
+                </span>
                 <span className="tag_list__count"> ({tagCount.count})</span>
               </div>
             );
