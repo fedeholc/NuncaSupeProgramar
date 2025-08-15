@@ -42,20 +42,19 @@ function SearchClient({ posts }: SearchClientProps) {
           setQuery={setInitialQuery}
         />
       </Modal>
-      <div style={{ padding: "0rem", width: "100%" }}>
+      <div style={{ padding: "0rem", width: "100%", position: "relative" }}>
         <input
           value={initialQuery}
           type="text"
           placeholder="Buscar..."
           style={{
-            padding: "1rem",
+            padding: "1rem 1rem 1rem 1.6rem",
             width: "100%",
             border: "2px solid transparent",
             outline: "2px solid var(--border-color)",
             caretColor: "var(--border-color)", // Cambia el color del cursor
 
             boxShadow: "0px 0px 11px 3px var(--shadow-color)",
-
             borderRadius: "10vh",
             fontSize: "1.2rem",
             /*             backgroundColor: "var(--search-selected)",
@@ -71,6 +70,26 @@ function SearchClient({ posts }: SearchClientProps) {
             }
           }}
         />
+        {/* Shortcut badge */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute",
+            right: "32px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            background: "var(--background-color)",
+            color: "var(--text-color)",
+
+            fontSize: "0.9rem",
+            display: "flex",
+            alignItems: "center",
+
+            userSelect: "none",
+          }}
+        >
+          <span style={{ opacity: 0.7, fontWeight: 600, border: "0px dashed white", borderRadius: "0.3rem",padding: "0rem 0.5rem"}}>/ o Ctrl+K</span>
+        </div>
       </div>
     </>
   );

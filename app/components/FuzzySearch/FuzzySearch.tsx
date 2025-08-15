@@ -60,7 +60,8 @@ export default function FuzzySearch({
   // Atajo de teclado para abrir el input
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.key.toLowerCase() === "k") {
+      // Allow Ctrl+K (Windows/Linux) or Cmd+K (Mac) to focus the search input
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         inputRef.current?.focus();
       }
@@ -336,28 +337,27 @@ export default function FuzzySearch({
           gap: "1rem",
         }}
       >
-        <input
-          ref={inputRef}
-          type="text"
-          placeholder="Buscar apuntes..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          style={{
-            maxWidth: "800px",
-            padding: "1rem",
-            width: "100%",
-            border: "2px solid transparent",
-            outline: "2px solid var(--border-color)",
-            caretColor: "var(--border-color)", // Cambia el color del cursor
+        <div style={{ position: "relative", width: "100%", maxWidth: "800px" }}>
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="Buscar..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            style={{
+              padding: "1rem 1rem 1rem 1.6rem",
+              width: "100%",
+              border: "2px solid transparent",
+              outline: "2px solid var(--border-color)",
+              caretColor: "var(--border-color)", // Cambia el color del cursor
+              boxShadow: "0px 0px 11px 3px var(--shadow-color)",
+              borderRadius: "10vh",
+              fontSize: "1.2rem",
+            }}
+          />
 
-            boxShadow: "0px 0px 11px 3px var(--shadow-color)",
-
-            borderRadius: "10vh",
-            fontSize: "1.2rem",
-          }}
-        />
-        {/*    <LuColumns2 size={30}></LuColumns2>
-        <LuRows2 size={30}></LuRows2> */}
+         
+        </div>
       </div>
       <div className={CSS.resultsGrid}>
         {processedResults?.length > 0 && (
