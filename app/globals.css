@@ -461,9 +461,9 @@ h2 {
   min-height: 100vh;
   display: grid;
   /* max-width: 800px; */
-  padding: 1rem;
+  padding: 1rem 2rem;
   width: 100%;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
 }
 
 a:visited {
@@ -549,7 +549,8 @@ footer {
   font-weight: 400;
   overflow-wrap: anywhere;
   max-width: 1100px;
-  padding: 1rem 2rem 1.5rem 2rem;
+  width: 100%;
+  /* padding: 1rem 2rem 1.5rem 2rem; */
 
   @media screen {
     @media (max-width: 1200px) {
