@@ -5,6 +5,7 @@
     justify-content: space-between;
     gap: 0.5rem;
     width: 100%;
+    padding: 0rem 2rem;
   }
 
   .navbar__logo {
@@ -21,7 +22,7 @@
     justify-content: right;
      
    /*   padding-right: 0.5rem; */
-    column-gap: 0.5rem;
+     column-gap: 0.5rem;
     font-size: 0.8rem;
     font-family: "Roboto mono", monospace;
     width: 100%;

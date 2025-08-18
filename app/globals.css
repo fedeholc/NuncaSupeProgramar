@@ -291,6 +291,11 @@ html[data-theme="high-contrast"],
 :root {
   font-size: 18px;
   font-weight: 400;
+
+  @media screen and (max-width: 550px) {
+    font-size: 15px;
+
+  }
 }
 
 h1,
