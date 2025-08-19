@@ -81,7 +81,7 @@ export function ThemeToggler() {
   }
 
   return (
-    <div style={{ display: "flex", gap: "0.5rem" }}>
+    <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", justifyContent: "center" }}>
       <button
         style={{
           ...buttonStyle,

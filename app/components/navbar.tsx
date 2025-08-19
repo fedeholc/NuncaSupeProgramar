@@ -47,7 +47,7 @@ export default function NavBar({
             width: "100%",
             flexDirection: "row",
             justifyContent: "flex-end",
-            padding: "0.5rem",
+            padding: "0.5rem 0rem",
           }}
           onMouseLeave={() => {
             timerRef.current = setTimeout(() => {

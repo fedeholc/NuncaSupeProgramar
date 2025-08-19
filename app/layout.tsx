@@ -19,7 +19,6 @@ import "./prism-material-dark.css";
 import { ThemeProvider } from "./components/themeToggler";
 import { cookies } from "next/headers";
 
-//TODO: poner un toggle para activar animación
 /* import { Canvas } from "./components/canvas";
  */
 const montserrat = Montserrat({
