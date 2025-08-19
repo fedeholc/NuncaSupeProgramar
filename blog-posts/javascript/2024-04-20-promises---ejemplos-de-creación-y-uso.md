@@ -19,7 +19,7 @@ Aquí veremos un ejemplo de creación y uso de promises en javascript, y luego c
 
 Cuando utilizamos `fetch` esta solo devuelve una promesa como rechazada si hay un error de red, pero si la respuesta del servidor es un status code 404 o 500 `fetch` no lo considera un error de red y la promesa se resuelve correctamente con esos status en la propiedad `response.status` y con `response.ok` como `false`. Por el contrario, si `response.status` tiene valores entre 200 y 299, `response.ok` será `true`.
 
-Pemos utilizar promises para crear una función `customFetch` que devuelva una promesa rechazada si el status code de la respuesta no está entre 200 y 299 del siguiente modo:
+Podemos utilizar promises para crear una función `customFetch` que devuelva una promesa rechazada si el status code de la respuesta no está entre 200 y 299 del siguiente modo:
 
 ```javascript
 function customFetch(url) {

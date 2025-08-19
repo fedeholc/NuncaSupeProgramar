@@ -18,11 +18,15 @@ export default async function TagSearch() {
 
    
 
-  async function rutear(data) {
+  interface FormData {
+    get(name: string): FormDataEntryValue | null;
+  }
+
+  async function rutear(data: FormData): Promise<void> {
     "use server";
 
     if (data.get("tagInput") != "") {
-      let ruta = encodeURI(`/tags/${data.get("tagInput")}`);
+      const ruta: string = encodeURI(`/tags/${data.get("tagInput")}`);
       redirect(ruta);
     }
   }
