@@ -7,7 +7,7 @@ export default async function sitemap() {
     .filter(({ draft }) => draft === false)
     .map(({ id, date, /* title, categories */ }) => {
       return {
-        url: `https://nsp.fedeholc.ar/posts/${id}`,
+        url: `https://err0r.fedeholc.ar/posts/${id}`,
         lastModified: date,
         changeFrequency: "weekly",
         priority: 1,

@@ -1,10 +1,10 @@
-# NuncaSupeProgramar - Blog de apuntes para aprender desarrollo web 👾 (v0.2)
+# err0r - Blog of notes to learn software development 🐈‍⬛ (v0.3)
 
-[![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/fedeholc/NuncaSupeProgramar/blob/main/README.es.md)
+[![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/fedeholc/err0r/blob/main/README.es.md)
 
 My blog to organize notes, learn, and share knowledge.
 
-Online: [https://nsp.fedeholc.ar/](https://nsp.fedeholc.ar/)
+Online: [https://err0r.fedeholc.ar/](https://err0r.fedeholc.ar/)
 
 ## Libraries and resources
 
