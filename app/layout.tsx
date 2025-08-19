@@ -51,7 +51,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: ">> err0r << v0.2",
+  title: ">> err0r << v0.3",
   description: "Blog de apuntes para aprender a programar",
 };
 
