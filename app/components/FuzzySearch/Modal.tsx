@@ -41,7 +41,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
           background: "var(--background-color)",
           color: "var(--text-color)",
           padding: "2rem",
-          borderRadius: "8px",
+          borderRadius: "0px",
           height: "100%",
           width: "100%",
           boxShadow: "0 0 20px var(--shadow-color, #000)",

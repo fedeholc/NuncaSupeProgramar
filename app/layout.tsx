@@ -109,7 +109,7 @@ export default async function RootLayout({
                   gap: "1rem",
                   width: "fit-content",
                   padding: "0.1rem 2rem",
-                  borderRadius: "0.5rem",
+                  borderRadius: "0rem",
                   border: "1px dashed var(--border-color-secondary)",
                 }}
               >

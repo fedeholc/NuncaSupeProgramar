@@ -62,21 +62,21 @@ export function ThemeToggler() {
     cursor: "pointer",
     padding: "0.3rem 0.7rem",
     fontSize: "0.9rem",
-    borderRadius: "0.3rem",
+    borderRadius: "0rem",
   };
   let buttonSystemStyle = {};
   if (prefersDark) {
     buttonSystemStyle = {
       background: "var(--dark-th-background-color)",
       color: "var(--dark-th-text-color)",
-      border: "2px dashed var(--dark-th-border-color)",
+      border: "1px dashed var(--dark-th-border-color)",
     };
   }
   if (prefersLight) {
     buttonSystemStyle = {
       background: "var(--light-th-background-color)",
       color: "var(--light-th-text-color)",
-      border: "2px dashed var(--light-th-border-color)",
+      border: "1px dashed var(--light-th-border-color)",
     };
   }
 
@@ -96,7 +96,7 @@ export function ThemeToggler() {
           ...buttonStyle,
           background: "var(--light-th-background-color)",
           color: "var(--light-th-text-color)",
-          border: "2px solid var(--light-th-border-color)",
+          border: "1px solid var(--light-th-border-color)",
         }}
         onClick={() => saveThemePreference("light")}
       >
@@ -107,7 +107,7 @@ export function ThemeToggler() {
           ...buttonStyle,
           background: "var(--lightlow-th-background-color)",
           color: "var(--lightlow-th-text-color)",
-          border: "2px solid var(--lightlow-th-border-color)",
+          border: "1px solid var(--lightlow-th-border-color)",
         }}
         onClick={() => saveThemePreference("low-contrast")}
       >
@@ -118,7 +118,7 @@ export function ThemeToggler() {
           ...buttonStyle,
           background: "var(--dark-th-background-color)",
           color: "var(--dark-th-text-color)",
-          border: "2px solid var(--dark-th-border-color)",
+          border: "1px solid var(--dark-th-border-color)",
         }}
         onClick={() => saveThemePreference("dark")}
       >
@@ -129,7 +129,7 @@ export function ThemeToggler() {
           ...buttonStyle,
           background: "var(--darkhigh-th-background-color)",
           color: "var(--darkhigh-th-text-color)",
-          border: "2px solid var(--darkhigh-th-border-color)",
+          border: "1px solid var(--darkhigh-th-border-color)",
         }}
         onClick={() => saveThemePreference("high-contrast")}
       >

@@ -347,11 +347,11 @@ export default function FuzzySearch({
             style={{
               padding: "1rem 1rem 1rem 1.6rem",
               width: "100%",
-              border: "2px solid transparent",
-              outline: "2px solid var(--border-color)",
+              border: "1px solid transparent",
+              outline: "1px solid var(--border-color)",
               caretColor: "var(--border-color)", // Cambia el color del cursor
               boxShadow: "0px 0px 11px 3px var(--shadow-color)",
-              borderRadius: "10vh",
+              borderRadius: "0vh",
               fontSize: "1.2rem",
             }}
           />
@@ -496,10 +496,10 @@ function PostPreview({
   return (
     <div
       style={{
-        border: "2px dashed var(--border-color-secondary)",
+        border: "1px dashed var(--border-color-secondary)",
         padding: "1rem",
         /* marginTop: "1rem", */
-        borderRadius: "12px",
+        borderRadius: "0px",
         backgroundColor: "var(--background-color)",
         color: "var(--text-color)",
         height: "100%",
@@ -515,7 +515,7 @@ function PostPreview({
           backgroundColor: "var(--border-color-secondary)",
           color: "var(--background-color)",
           padding: "0.5rem",
-          borderRadius: "4px",
+          borderRadius: "0px",
           fontSize: "1.2rem",
         }}
       >
@@ -530,32 +530,4 @@ function PostPreview({
     </div>
   );
 }
-
-/* export function SearchBox({
-  query,
-  setQuery,
-  ref
-}: {
-  query: string;
-  setQuery: (query: string) => void;
-  ref: React.Ref<HTMLInputElement>;
-}) {
-  return (
-    <input
-      type="text"
-      ref={ref}
-      placeholder="Buscar apuntes..."
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-      style={{
-        padding: "1rem",
-        width: "100%",
-        border: "2px solid transparent",
-        outline: "2px solid var(--border-color)",
-        borderRadius: "8px",
-        fontSize: "1.2rem",
-      }}
-    />
-  );
-}
- */
+ 
