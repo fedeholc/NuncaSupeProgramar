@@ -514,8 +514,8 @@ function PostPreview({
           fontWeight: "bold",
           backgroundColor: "var(--border-color-secondary)",
           color: "var(--background-color)",
-          padding: "0.5rem",
-          borderRadius: "0px",
+          padding: "0.5rem 1rem",
+          borderRadius: "5px",
           fontSize: "1.2rem",
         }}
       >
